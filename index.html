@@ -62,11 +62,9 @@
   .alley-night-bg {
     background-color: var(--bg-dark);
     background-image: 
-      /* Reflejos de neón rosa y azul en suelo húmedo */
       radial-gradient(ellipse at 50% 100%, rgba(255, 0, 127, 0.25) 0%, rgba(0, 240, 255, 0.1) 40%, transparent 80%),
       radial-gradient(circle at 20% 20%, rgba(255, 0, 60, 0.2) 0%, transparent 40%),
       radial-gradient(circle at 80% 30%, rgba(255, 0, 127, 0.2) 0%, transparent 40%),
-      /* Textura de telaraña sutil */
       repeating-radial-gradient(circle at 50% 30%, transparent 0, transparent 50px, rgba(255, 255, 255, 0.03) 51px, transparent 52px);
   }
 
@@ -82,17 +80,17 @@
     box-shadow: 0 12px 30px -5px rgba(255, 0, 127, 0.4);
   }
 
-  /* Red de Telaraña Realista en Hero */
-  .web-container {
+  /* Contenedor del Hero con la Mano de Spider-Man lanzando tela de araña */
+  .hero-spidey-wrapper {
     position: relative;
-    background: radial-gradient(circle, rgba(255,0,127,0.15) 0%, rgba(0,0,0,0.8) 70%);
+    background: radial-gradient(circle, rgba(255,0,127,0.15) 0%, rgba(0,0,0,0.85) 75%);
     border: 2px solid rgba(255, 0, 127, 0.3);
-    box-shadow: 0 0 30px rgba(255, 0, 127, 0.3), inset 0 0 20px rgba(0,0,0,0.9);
+    box-shadow: 0 0 35px rgba(255, 0, 127, 0.3), inset 0 0 25px rgba(0,0,0,0.9);
   }
 
   .floating-shoe {
     animation: floatAnimation 4s ease-in-out infinite;
-    filter: drop-shadow(0 20px 20px rgba(0,0,0,0.9)) drop-shadow(0 0 15px rgba(255,0,60,0.6));
+    filter: drop-shadow(0 20px 20px rgba(0,0,0,0.9)) drop-shadow(0 0 20px rgba(255,0,60,0.7));
   }
 
   @keyframes floatAnimation {
@@ -154,19 +152,19 @@
   </div>
 </header>
 
-<!-- ============ HERO SECTION: CALLEJÓN URBANO & TELARAÑA ============ -->
+<!-- ============ HERO SECTION ============ -->
 <section id="top" class="relative overflow-hidden border-b border-zinc-800/80 py-12 sm:py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
     
     <div>
       <div class="inline-block bg-zinc-950 border border-[var(--neon-pink)] px-4 py-1.5 rounded-full text-[var(--neon-pink)] text-xs font-bold uppercase tracking-widest mb-4 shadow-[0_0_10px_rgba(255,0,127,0.4)]">
-        🕷️ Ambiente Callejero Nocturno
+        🕷️ Edición Especial Spider-Verse
       </div>
       <h1 class="display-font text-5xl sm:text-7xl lg:text-8xl leading-none mb-6">
         URBAN <br><span class="text-neon-pink graffiti-font">STREETWEAR</span>
       </h1>
       <p class="text-base sm:text-lg text-zinc-300 max-w-md mb-8 leading-relaxed">
-        Zapatillas de alto contraste e iluminación cinematográfica. Conseguí tus pares de culto en <span class="text-white font-bold">1 pago con 10% OFF</span> o hasta en <span class="text-[var(--spidey-blue)] font-bold">3 cuotas fijas</span>.
+        Zapatillas de alto contraste e iluminación cinematográfica. Pagá en <span class="text-white font-bold">1 pago con 10% OFF</span> o hasta en <span class="text-[var(--spidey-blue)] font-bold">3 cuotas fijas</span> por Mercado Pago o Transferencia.
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="#catalogo" class="bg-[var(--spidey-red)] text-white font-extrabold uppercase text-sm px-8 py-4 rounded-xl hover:shadow-[0_0_25px_rgba(255,0,60,0.8)] transition">
@@ -178,28 +176,27 @@
       </div>
     </div>
 
-    <!-- DISPLAY CINEMATOGRÁFICO: Zapatilla Flotando en Telaraña Realista -->
+    <!-- DISPLAY HERO: MANO DE SPIDER-MAN LANZANDO TELA DE ARAÑA A LA ZAPATILLA -->
     <div class="relative flex justify-center items-center">
-      <div class="web-container w-full max-w-md p-8 rounded-3xl overflow-hidden relative">
+      <div class="hero-spidey-wrapper w-full max-w-md p-8 rounded-3xl overflow-hidden relative">
         
-        <!-- SVG TELARAÑA REALISTA DE FONDO -->
-        <svg class="absolute inset-0 w-full h-full opacity-40 pointer-events-none" viewBox="0 0 500 500" fill="none" stroke="currentColor">
-          <g stroke="white" stroke-width="0.8">
-            <!-- Rayos principales -->
-            <line x1="250" y1="250" x2="0" y2="0"/>
-            <line x1="250" y1="250" x2="250" y2="0"/>
-            <line x1="250" y1="250" x2="500" y2="0"/>
-            <line x1="250" y1="250" x2="500" y2="250"/>
-            <line x1="250" y1="250" x2="500" y2="500"/>
-            <line x1="250" y1="250" x2="250" y2="500"/>
-            <line x1="250" y1="250" x2="0" y2="500"/>
-            <line x1="250" y1="250" x2="0" y2="250"/>
-            <!-- Anillos de red -->
-            <polygon points="250,200 285,215 300,250 285,285 250,300 215,285 200,250 215,215" fill="none"/>
-            <polygon points="250,150 320,180 350,250 320,320 250,350 180,320 150,250 180,180" fill="none"/>
-            <polygon points="250,90 363,137 410,250 363,363 250,410 137,363 90,250 137,137" fill="none"/>
-            <polygon points="250,30 405,95 470,250 405,405 250,470 95,405 30,250 95,95" fill="none"/>
-          </g>
+        <!-- MANO DE SPIDER-MAN EN LA ESQUINA INFERIOR IZQUIERDA LANZANDO TELARAÑA -->
+        <svg class="absolute bottom-0 left-0 w-48 h-48 z-20 text-[var(--spidey-red)] filter drop-shadow-[0_0_10px_rgba(255,0,60,0.8)] pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
+          <!-- Guante / Mano en gesto de lanzar red (Thwip) -->
+          <path d="M10,190 C30,170 50,140 65,120 C70,113 78,115 82,122 C85,127 82,135 75,142 L55,165 C70,145 90,105 102,80 C106,72 115,73 118,80 C121,87 116,96 108,108 L85,140 C100,120 120,85 132,65 C136,58 145,59 148,66 C151,73 145,82 135,97 L105,140 C115,130 130,118 142,112 C149,108 156,114 153,122 C150,130 138,138 122,148 L90,168 C110,165 130,165 145,170 C153,173 152,185 143,186 C125,188 95,185 75,185 Z" fill="#ff003c" stroke="#ffffff" stroke-width="2"/>
+          <!-- Trazo negro del traje -->
+          <path d="M10,190 L60,140 M40,180 L80,130 M70,185 L100,150" stroke="#000" stroke-width="2.5"/>
+        </svg>
+
+        <!-- REDES LUMINOSAS DISPARADAS DESDE LA MANO DIRECTO A LA ZAPATILLA -->
+        <svg class="absolute inset-0 w-full h-full z-20 pointer-events-none" viewBox="0 0 400 400" fill="none">
+          <!-- Líneas de Disparo de Red con Brillo Neón -->
+          <path d="M60,320 Q 150,220 230,160" stroke="#ffffff" stroke-width="3" filter="drop-shadow(0 0 8px #00f0ff)"/>
+          <path d="M60,320 Q 180,260 250,200" stroke="#ffffff" stroke-width="2" filter="drop-shadow(0 0 6px #ff007f)"/>
+          <path d="M60,320 Q 120,180 200,120" stroke="#ffffff" stroke-width="2" filter="drop-shadow(0 0 6px #00f0ff)"/>
+          <!-- Red que envuelve la zapatilla -->
+          <path d="M180,100 C 240,80 300,120 320,180 C 300,240 220,260 180,200 C 160,150 180,100 180,100 Z" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.9" filter="drop-shadow(0 0 5px #ff003c)"/>
+          <path d="M200,120 L 300,220 M 300,130 L 190,210 M 250,90 L 240,250" stroke="#ffffff" stroke-width="1.2" opacity="0.8"/>
         </svg>
 
         <!-- Etiqueta de la Edición -->
@@ -210,16 +207,16 @@
           <span class="text-xs text-[var(--spidey-blue)] font-bold uppercase tracking-wider">Reflejos Nocturnos</span>
         </div>
 
-        <!-- ZAPATILLA DE CHAROL NEGRO FLOTANDO -->
+        <!-- ZAPATILLA DE CHAROL NEGRO ATRAPADA POR LA RED -->
         <div class="relative z-10 my-6 flex justify-center items-center">
           <img src="images/p1.jpg" alt="Air Jordan 1 Mid Charol Negro Cordones Rojos" 
-               class="floating-shoe rounded-2xl w-full h-64 object-cover border-2 border-[var(--spidey-red)] shadow-[0_0_30px_rgba(255,0,60,0.5)]">
+               class="floating-shoe rounded-2xl w-full h-64 object-cover border-2 border-[var(--spidey-red)] shadow-[0_0_30px_rgba(255,0,60,0.6)]">
         </div>
 
         <!-- Información y Precios -->
-        <div class="relative z-10 bg-black/80 backdrop-blur border border-zinc-800 rounded-xl p-4">
+        <div class="relative z-10 bg-black/85 backdrop-blur border border-zinc-800 rounded-xl p-4">
           <h3 class="graffiti-font text-2xl text-neon-pink mb-1">AJ1 Mid Patent Black & Red</h3>
-          <p class="text-xs text-zinc-400 mb-3">Charol negro de alto brillo, cordones rojo neón y atrapada en red urbana.</p>
+          <p class="text-xs text-zinc-400 mb-3">Charol negro de alto brillo, cordones rojo neón y atrapada por la red de Spider-Man.</p>
           <div class="flex justify-between items-end border-t border-zinc-800 pt-2">
             <div>
               <p class="text-[10px] text-zinc-500 uppercase">1 Pago (10% OFF Transferencia)</p>
@@ -413,7 +410,7 @@ const PRICE = 99500;
 const DESCUENTO_PCT = 10;
 
 const productos = [
-  { id:1,  nombre:"Air Jordan 1 Mid Patent Black & Red", genero:"unisex", img:"images/p1.jpg", desc:"Charol negro brillante con cordones rojos atrapada en red urbana de neón." },
+  { id:1,  nombre:"Air Jordan 1 Mid Patent Black & Red", genero:"unisex", img:"images/p1.jpg", desc:"Charol negro brillante con cordones rojos atrapada en la red de Spider-Man." },
   { id:2,  nombre:"Nike Air Force 1 Personalizadas", genero:"unisex", img:"images/p2.jpg", desc:"Air Force 1 clásicas con detalles exclusivos y charms en los cordones." },
   { id:3,  nombre:"Adidas Campus 00s Beige", genero:"mujer", img:"images/p3.jpg", desc:"Gamuza beige con stripes anchas y suela chunky retro." },
   { id:4,  nombre:"Air Jordan 13 Cap & Gown", genero:"hombre", img:"images/p4.jpg", desc:"Blackout total con acabados premium y textura holográfica." },
