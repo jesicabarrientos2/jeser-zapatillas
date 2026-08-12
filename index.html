@@ -6,97 +6,106 @@
 <title>JESER — Urban Sneakers & Streetwear</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Fugaz+One&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-dark: #0d0c0b;
-    --card-bg: #161412;
-    --card-hover: #1e1b18;
-    --accent-cream: #EADBC8;
-    --accent-sand: #D0B8A8;
-    --accent-cacao: #7B5E4B;
-    --accent-dark-mocha: #5A4232;
-    --text-primary: #F8F5F0;
-    --text-muted: #A8A099;
-    --border-subtle: rgba(234, 219, 200, 0.12);
+    --bg-dark: #0d0d0f;
+    --card-bg: #16161a;
+    --neon-pink: #ff007f;
+    --neon-green: #39ff14;
+    --neon-cyan: #00f0ff;
+    --neon-yellow: #ffe600;
   }
-
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
+    font-family: 'Inter', sans-serif; 
     background-color: var(--bg-dark); 
-    color: var(--text-primary);
+    color: #ffffff;
+  }
+  .graffiti-font { font-family: 'Permanent Marker', cursive; }
+  .display-font { font-family: 'Fugaz One', cursive; }
+
+  /* Efecto Grafiti Neon Text */
+  .text-neon-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6), 0 0 20px rgba(255, 0, 127, 0.4);
+  }
+  .text-neon-green {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+  }
+  .text-neon-cyan {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
   }
 
-  .font-display { font-family: 'Syne', sans-serif; }
-
-  /* Gradient suave de fondo */
-  .earth-bg {
+  /* Fondo urbano con salpicaduras */
+  .graffiti-bg {
     background-image: 
-      radial-gradient(circle at 15% 15%, rgba(123, 94, 75, 0.12) 0%, transparent 40%),
-      radial-gradient(circle at 85% 75%, rgba(208, 184, 168, 0.08) 0%, transparent 40%);
+      radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.15) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 20%),
+      radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.08) 0%, transparent 30%);
   }
 
-  /* Tarjetas y UI sofisticadas */
-  .brand-card {
+  /* Tarjetas y Bordes Neón */
+  .graffiti-card {
     background: var(--card-bg);
-    border: 1px solid var(--border-subtle);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #2a2a32;
+    transition: all 0.3s ease;
   }
-  .brand-card:hover {
-    background: var(--card-hover);
-    border-color: rgba(234, 219, 200, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+  .graffiti-card:hover {
+    border-color: var(--neon-pink);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(255, 0, 127, 0.3);
   }
 
   /* Botón Flotante WhatsApp */
   .btn-wa-float {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px;
+    right: 20px;
     z-index: 100;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
   }
 
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg-dark); }
-  ::-webkit-scrollbar-thumb { background: var(--accent-dark-mocha); border-radius: 3px; }
-  
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 4px; }
   .card-img { aspect-ratio: 1/1; object-fit: cover; }
-  .fade-in { animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeIn .25s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
-<body class="antialiased earth-bg min-h-screen flex flex-col">
+<body class="antialiased graffiti-bg">
 
 <!-- ============ HEADER / NAVBAR ============ -->
-<header class="sticky top-0 z-40 bg-[#0d0c0b]/90 backdrop-blur-md border-b border-[#EADBC8]/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-    <!-- LOGO JESER -->
-    <a href="#top" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-full bg-[#1e1b18] border border-[#EADBC8]/20 flex items-center justify-center group-hover:border-[#EADBC8] transition duration-300">
-        <span class="font-display font-extrabold text-[#EADBC8] text-lg">J</span>
+<header class="sticky top-0 z-40 bg-[#0d0d0f]/90 backdrop-blur border-b border-zinc-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+    <!-- LOGO JESER CON COHETE GRAFITI -->
+    <a href="#top" class="flex items-center gap-2 group">
+      <div class="relative w-10 h-10 flex items-center justify-center bg-zinc-900 rounded-full border border-[var(--neon-pink)] group-hover:scale-110 transition">
+        <!-- SVG Cohete Grafiti -->
+        <svg class="w-6 h-6 text-[var(--neon-pink)] drop-shadow-[0_0_5px_rgba(255,0,127,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m2.828-9.9a9 9 0 0112.728 0M12 15l-3 3m3-3l3 3m-3-3V3"/>
+        </svg>
       </div>
-      <span class="font-display font-extrabold text-2xl tracking-wider text-[#F8F5F0] group-hover:text-[#EADBC8] transition">JESER</span>
+      <span class="graffiti-font text-3xl sm:text-4xl text-neon-pink tracking-wider rotate-[-2deg]">JESER</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-[#A8A099]">
-      <a href="#catalogo" class="hover:text-[#EADBC8] transition">Catálogo</a>
-      <a href="#talle" class="hover:text-[#EADBC8] transition">Mi Talle</a>
-      <a href="#pago" class="hover:text-[#EADBC8] transition">Medios de Pago</a>
-      <a href="#envios" class="hover:text-[#EADBC8] transition">Envíos</a>
+    <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-300">
+      <a href="#catalogo" class="hover:text-[var(--neon-pink)] transition">Catálogo</a>
+      <a href="#talle" class="hover:text-[var(--neon-cyan)] transition">Mi Talle</a>
+      <a href="#pago" class="hover:text-[var(--neon-green)] transition">Medios de Pago</a>
+      <a href="#envios" class="hover:text-[var(--neon-yellow)] transition">Envíos</a>
     </nav>
 
     <div class="flex items-center gap-2">
       <a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Quiero%20consultar%20por%20zapatillas" target="_blank" 
-         class="bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] text-xs font-bold uppercase px-3.5 py-2 rounded-full transition flex items-center gap-1">
+         class="bg-[var(--neon-green)] text-black text-xs font-extrabold uppercase px-3 py-2 rounded-full hover:brightness-125 transition flex items-center gap-1">
          <span>WA 1</span>
       </a>
       <a href="https://wa.me/5491139116989?text=Hola%20Jeser!%20Quiero%20consultar%20por%20zapatillas" target="_blank" 
-         class="bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] text-xs font-bold uppercase px-3.5 py-2 rounded-full transition flex items-center gap-1">
+         class="bg-[var(--neon-green)] text-black text-xs font-extrabold uppercase px-3 py-2 rounded-full hover:brightness-125 transition flex items-center gap-1">
          <span>WA 2</span>
       </a>
     </div>
@@ -104,47 +113,47 @@
 </header>
 
 <!-- ============ HERO SECTION ============ -->
-<section id="top" class="relative overflow-hidden border-b border-[#EADBC8]/10 py-16 sm:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+<section id="top" class="relative overflow-hidden border-b border-zinc-800 py-12 sm:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-center">
     <div>
-      <div class="inline-flex items-center gap-2 bg-[#161412] border border-[#EADBC8]/20 px-3.5 py-1.5 rounded-full text-[#EADBC8] text-xs font-semibold tracking-wider mb-6">
-        <span>🇦🇷</span> Envíos a todo el país
+      <div class="inline-block bg-zinc-900 border border-[var(--neon-yellow)] px-3 py-1 rounded-full text-[var(--neon-yellow)] text-xs font-bold uppercase tracking-widest mb-4">
+        🇦🇷 Envíos a todo el país
       </div>
-      <h1 class="font-display text-5xl sm:text-7xl font-extrabold tracking-tight text-[#F8F5F0] leading-none mb-6">
-        URBAN <br><span class="text-[#EADBC8]">STREETWEAR</span>
+      <h1 class="display-font text-5xl sm:text-7xl lg:text-8xl leading-none mb-6">
+        ESTILO <br><span class="text-neon-pink graffiti-font">URBANO</span>
       </h1>
-      <p class="text-base sm:text-lg text-[#A8A099] max-w-md mb-8 leading-relaxed">
-        Zapatillas seleccionadas al mejor precio del mercado. Pagá en <span class="text-[#F8F5F0] font-semibold">1 pago con 10% OFF</span> o en <span class="text-[#EADBC8] font-semibold">2 y 3 cuotas fijas</span> por Mercado Pago o Transferencia.
+      <p class="text-base sm:text-lg text-zinc-400 max-w-md mb-8">
+        Zapatillas seleccionadas al mejor precio del mercado. Pagá en <span class="text-white font-bold">1 pago con 10% OFF</span> o en <span class="text-[var(--neon-cyan)] font-bold">2 y 3 cuotas fijas</span> por Mercado Pago o Transferencia.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a href="#catalogo" class="bg-[#EADBC8] text-[#0d0c0b] font-bold uppercase text-xs tracking-wider px-8 py-4 rounded-xl hover:bg-[#F8F5F0] transition shadow-lg">
+        <a href="#catalogo" class="bg-[var(--neon-pink)] text-white font-extrabold uppercase text-sm px-8 py-4 rounded-xl hover:shadow-[0_0_20px_rgba(255,0,127,0.8)] transition">
           Ver Modelos
         </a>
-        <a href="#pago" class="border border-[#EADBC8]/30 text-[#EADBC8] font-bold uppercase text-xs tracking-wider px-8 py-4 rounded-xl hover:bg-[#EADBC8]/10 transition">
+        <a href="#pago" class="border-2 border-[var(--neon-cyan)] text-[var(--neon-cyan)] font-extrabold uppercase text-sm px-8 py-4 rounded-xl hover:bg-[var(--neon-cyan)] hover:text-black transition">
           Ver Cuotas
         </a>
       </div>
     </div>
 
-    <!-- Banner Destacado -->
+    <!-- Banner con efecto Card Grafiti -->
     <div class="relative flex justify-center items-center">
-      <div class="brand-card p-6 rounded-3xl max-w-sm w-full relative">
-        <div class="absolute -top-3 -right-3 bg-[#7B5E4B] text-[#F8F5F0] font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+      <div class="graffiti-card p-6 rounded-3xl max-w-sm w-full rotate-[3deg] relative">
+        <div class="absolute -top-4 -right-4 bg-[var(--neon-yellow)] text-black font-extrabold text-xs uppercase px-3 py-1 rounded-full rotate-[12deg]">
           10% OFF Transferencia
         </div>
-        <img src="images/p9.jpg" alt="Zapatilla Jeser" class="rounded-2xl mb-5 w-full h-60 object-cover">
-        <div class="flex justify-between items-center mb-3">
-          <span class="font-display font-bold text-xl text-[#F8F5F0]">URBAN SELECTION</span>
-          <span class="text-[11px] bg-[#25221e] text-[#A8A099] px-2.5 py-1 rounded-md font-medium">Talles 26 a 45</span>
+        <img src="images/p9.jpg" alt="Zapatilla Jeser" class="rounded-2xl mb-4 w-full h-56 object-cover">
+        <div class="flex justify-between items-center mb-2">
+          <span class="graffiti-font text-2xl text-[var(--neon-cyan)]">URBAN STREET</span>
+          <span class="text-xs bg-zinc-800 text-zinc-300 px-2 py-1 rounded">Talles 26 a 45</span>
         </div>
-        <div class="border-t border-[#EADBC8]/10 pt-4 flex justify-between items-end">
+        <div class="border-t border-zinc-800 pt-3 flex justify-between items-end">
           <div>
-            <p class="text-[11px] text-[#A8A099] uppercase font-medium">1 Pago (10% OFF)</p>
-            <p class="text-[#EADBC8] font-extrabold text-2xl">$89.550</p>
+            <p class="text-xs text-zinc-500 uppercase">1 Pago (Contando 10% OFF)</p>
+            <p class="text-neon-green font-extrabold text-2xl">$89.550</p>
           </div>
           <div class="text-right">
-            <p class="text-[11px] text-[#A8A099] uppercase font-medium">Lista / Cuotas</p>
-            <p class="text-[#F8F5F0] font-bold text-base">$99.500</p>
+            <p class="text-xs text-zinc-500 uppercase">Lista / Cuotas</p>
+            <p class="text-white font-bold text-base">$99.500</p>
           </div>
         </div>
       </div>
@@ -153,19 +162,19 @@
 </section>
 
 <!-- ============ FILTROS ============ -->
-<section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-6">
+<section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-6">
   <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
     <div>
-      <p class="text-xs font-bold uppercase tracking-widest text-[#7B5E4B] mb-1">Drops & Releases</p>
-      <h2 class="font-display text-3xl sm:text-4xl text-[#F8F5F0]">Catálogo de Zapatillas</h2>
+      <p class="graffiti-font text-lg text-[var(--neon-cyan)]">Drops & Releases</p>
+      <h2 class="display-font text-3xl sm:text-4xl text-white">Catálogo de Zapatillas</h2>
     </div>
     <div class="grid grid-cols-2 sm:flex gap-3">
-      <select id="filterGenero" class="bg-[#161412] border border-[#EADBC8]/20 text-[#F8F5F0] rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider focus:border-[#EADBC8] outline-none">
+      <select id="filterGenero" class="bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-2.5 text-sm font-semibold focus:border-[var(--neon-pink)] outline-none">
         <option value="todos">Todos los Géneros</option>
         <option value="hombre">Hombre</option>
         <option value="mujer">Mujer</option>
       </select>
-      <select id="filterTalle" class="bg-[#161412] border border-[#EADBC8]/20 text-[#F8F5F0] rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider focus:border-[#EADBC8] outline-none">
+      <select id="filterTalle" class="bg-zinc-900 border border-zinc-700 text-white rounded-xl px-4 py-2.5 text-sm font-semibold focus:border-[var(--neon-pink)] outline-none">
         <option value="todos">Talles: Todos</option>
       </select>
     </div>
@@ -173,69 +182,69 @@
 </section>
 
 <!-- ============ GRID PRODUCTOS ============ -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
   <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-  <p id="emptyState" class="hidden text-center text-[#A8A099] py-16 text-sm">No encontramos modelos con esos filtros.</p>
+  <p id="emptyState" class="hidden text-center text-zinc-500 py-16">No encontramos modelos con esos filtros.</p>
 </section>
 
 <!-- ============ MEDIOS DE PAGO Y CUOTAS ============ -->
-<section id="pago" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-[#EADBC8]/10">
-  <div class="text-center max-w-2xl mx-auto mb-14">
-    <p class="text-xs font-bold uppercase tracking-widest text-[#7B5E4B] mb-1">Facilidades de Pago</p>
-    <h2 class="font-display text-3xl sm:text-4xl text-[#F8F5F0]">Elegí cómo pagar tu par</h2>
-    <p class="text-[#A8A099] text-sm mt-2">Aceptamos Mercado Pago, transferencias bancarias y tarjetas de crédito/débito.</p>
+<section id="pago" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 border-t border-zinc-800">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <p class="graffiti-font text-xl text-[var(--neon-yellow)]">Facilidades de Pago</p>
+    <h2 class="display-font text-3xl sm:text-4xl">Elegí cómo pagar tu par</h2>
+    <p class="text-zinc-400 text-sm mt-2">Aceptamos Mercado Pago, transferencias bancarias y tarjetas de crédito/débito.</p>
   </div>
 
   <div class="grid md:grid-cols-3 gap-6">
     <!-- OPCION 1 PAGO -->
-    <div class="brand-card rounded-2xl p-6 border-t-2 border-t-[#EADBC8] flex flex-col justify-between">
+    <div class="graffiti-card rounded-2xl p-6 border-t-4 border-t-[var(--neon-green)] flex flex-col justify-between">
       <div>
-        <span class="bg-[#EADBC8]/10 text-[#EADBC8] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mejor Precio</span>
-        <h3 class="font-display text-xl font-bold mt-4 text-[#F8F5F0]">1 Pago / Transferencia</h3>
-        <p class="text-xs text-[#A8A099] mt-1 mb-5">Aprovechá un 10% de descuento directo sobre el valor total.</p>
-        <p class="text-[#EADBC8] font-extrabold text-3xl mb-1">$89.550</p>
-        <p class="text-xs text-[#A8A099]">Precio de lista: $99.500</p>
+        <span class="bg-[var(--neon-green)]/10 text-[var(--neon-green)] text-xs font-bold px-3 py-1 rounded-full uppercase">Mejor Precio</span>
+        <h3 class="display-font text-2xl mt-3">1 Pago / Transferencia</h3>
+        <p class="text-xs text-zinc-400 mt-1 mb-4">Aprovechá un 10% de descuento directo sobre el valor total.</p>
+        <p class="text-neon-green font-extrabold text-4xl mb-2">$89.550</p>
+        <p class="text-xs text-zinc-500">Precio de lista: $99.500</p>
       </div>
-      <div class="mt-8 pt-4 border-t border-[#EADBC8]/10">
-        <button id="copyCvuBtn" class="w-full bg-[#25221e] hover:bg-[#7B5E4B] hover:text-[#F8F5F0] text-[#EADBC8] font-bold py-3.5 rounded-xl transition text-xs uppercase tracking-wider">
+      <div class="mt-6 pt-4 border-t border-zinc-800">
+        <button id="copyCvuBtn" class="w-full bg-zinc-800 hover:bg-[var(--neon-green)] hover:text-black text-white font-bold py-3 rounded-xl transition text-sm">
           Copiar CVU para Transferir
         </button>
       </div>
     </div>
 
     <!-- OPCION 2 CUOTAS -->
-    <div class="brand-card rounded-2xl p-6 border-t-2 border-t-[#7B5E4B] flex flex-col justify-between">
+    <div class="graffiti-card rounded-2xl p-6 border-t-4 border-t-[var(--neon-cyan)] flex flex-col justify-between">
       <div>
-        <span class="bg-[#7B5E4B]/20 text-[#EADBC8] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Financiado</span>
-        <h3 class="font-display text-xl font-bold mt-4 text-[#F8F5F0]">2 Cuotas Sin Interés</h3>
-        <p class="text-xs text-[#A8A099] mt-1 mb-5">Pagá en 2 cuotas fijas por Mercado Pago o WhatsApp.</p>
-        <p class="text-[#F8F5F0] font-extrabold text-3xl mb-1">2x $49.750</p>
-        <p class="text-xs text-[#A8A099]">Total a pagar: $99.500</p>
+        <span class="bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)] text-xs font-bold px-3 py-1 rounded-full uppercase">Financiado</span>
+        <h3 class="display-font text-2xl mt-3">2 Cuotas Sin Interés</h3>
+        <p class="text-xs text-zinc-400 mt-1 mb-4">Pagá en 2 cuotas fijas por Mercado Pago o WhatsApp.</p>
+        <p class="text-[var(--neon-cyan)] font-extrabold text-4xl mb-2">2x $49.750</p>
+        <p class="text-xs text-zinc-500">Total a pagar: $99.500</p>
       </div>
-      <div class="mt-8 pt-4 border-t border-[#EADBC8]/10">
-        <a href="https://mpago.la/" target="_blank" class="block text-center w-full bg-[#009EE3] hover:brightness-110 text-white font-bold py-3.5 rounded-xl transition text-xs uppercase tracking-wider">
+      <div class="mt-6 pt-4 border-t border-zinc-800">
+        <a href="https://mpago.la/" target="_blank" class="block text-center w-full bg-[#009EE3] hover:brightness-110 text-white font-bold py-3 rounded-xl transition text-sm">
           Pagar con Mercado Pago
         </a>
       </div>
     </div>
 
     <!-- OPCION 3 CUOTAS -->
-    <div class="brand-card rounded-2xl p-6 border-t-2 border-t-[#D0B8A8] flex flex-col justify-between">
+    <div class="graffiti-card rounded-2xl p-6 border-t-4 border-t-[var(--neon-pink)] flex flex-col justify-between">
       <div>
-        <span class="bg-[#D0B8A8]/20 text-[#EADBC8] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
-        <h3 class="font-display text-xl font-bold mt-4 text-[#F8F5F0]">3 Cuotas Sin Interés</h3>
-        <p class="text-xs text-[#A8A099] mt-1 mb-5">Llevátelas hoy y pagalas cómodamente en 3 cuotas.</p>
-        <p class="text-[#EADBC8] font-extrabold text-3xl mb-1">3x $33.167</p>
-        <p class="text-xs text-[#A8A099]">Total a pagar: $99.500</p>
+        <span class="bg-[var(--neon-pink)]/10 text-[var(--neon-pink)] text-xs font-bold px-3 py-1 rounded-full uppercase">Popular</span>
+        <h3 class="display-font text-2xl mt-3">3 Cuotas Sin Interés</h3>
+        <p class="text-xs text-zinc-400 mt-1 mb-4">Llevátelas hoy y pagalas cómodamente en 3 cuotas.</p>
+        <p class="text-neon-pink font-extrabold text-4xl mb-2">3x $33.167</p>
+        <p class="text-xs text-zinc-500">Total a pagar: $99.500</p>
       </div>
-      <div class="mt-8 pt-4 border-t border-[#EADBC8]/10 flex gap-2">
+      <div class="mt-6 pt-4 border-t border-zinc-800 flex gap-2">
         <a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Quiero%20comprar%20en%203%20cuotas" target="_blank" 
-           class="block text-center w-1/2 bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] font-bold py-3 rounded-xl transition text-[10px] uppercase tracking-wider">
-          Link (WA 1)
+           class="block text-center w-1/2 bg-[var(--neon-pink)] hover:shadow-[0_0_15px_rgba(255,0,127,0.6)] text-white font-bold py-3 rounded-xl transition text-xs">
+          Link 3 Cuotas (Opción 1)
         </a>
         <a href="https://wa.me/5491139116989?text=Hola%20Jeser!%20Quiero%20comprar%20en%203%20cuotas" target="_blank" 
-           class="block text-center w-1/2 bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] font-bold py-3 rounded-xl transition text-[10px] uppercase tracking-wider">
-          Link (WA 2)
+           class="block text-center w-1/2 bg-[var(--neon-pink)] hover:shadow-[0_0_15px_rgba(255,0,127,0.6)] text-white font-bold py-3 rounded-xl transition text-xs">
+          Link 3 Cuotas (Opción 2)
         </a>
       </div>
     </div>
@@ -243,79 +252,79 @@
 </section>
 
 <!-- ============ SIMULADOR DE TALLE ============ -->
-<section id="talle" class="bg-[#161412]/50 border-y border-[#EADBC8]/10 py-16">
+<section id="talle" class="bg-zinc-900/50 border-y border-zinc-800 py-16">
   <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    <p class="text-xs font-bold uppercase tracking-widest text-[#7B5E4B] mb-1">Guía rápida</p>
-    <h2 class="font-display text-3xl sm:text-4xl text-[#F8F5F0] mb-2">Calculador de Talle</h2>
-    <p class="text-[#A8A099] mb-8 text-sm">Medí tu pie desde el talón a la punta en centímetros y descubrí tu talle en Jeser.</p>
+    <p class="graffiti-font text-lg text-[var(--neon-cyan)]">Guía rápida</p>
+    <h2 class="display-font text-3xl sm:text-4xl mb-3">Calculador de Talle</h2>
+    <p class="text-zinc-400 mb-8 text-sm">Medí tu pie desde el talón a la punta en centímetros y descubrí tu talle en Jeser.</p>
 
     <div class="grid sm:grid-cols-[1fr_auto] gap-4 items-end mb-6">
       <div>
-        <label for="footCm" class="block text-xs font-bold uppercase tracking-wider text-[#A8A099] mb-2">Largo de pie (cm)</label>
+        <label for="footCm" class="block text-xs font-bold uppercase text-zinc-300 mb-2">Largo de pie (cm)</label>
         <input id="footCm" type="number" step="0.1" min="14" max="30" placeholder="Ej: 24.5"
-          class="w-full bg-[#0d0c0b] border border-[#EADBC8]/20 rounded-xl px-4 py-3.5 text-lg font-bold text-[#F8F5F0] focus:border-[#EADBC8] outline-none">
+          class="w-full bg-black border border-zinc-700 rounded-xl px-4 py-3 text-lg font-bold text-white focus:border-[var(--neon-cyan)] outline-none">
       </div>
-      <button id="calcTalleBtn" class="bg-[#EADBC8] text-[#0d0c0b] font-bold uppercase text-xs tracking-wider px-8 py-4 rounded-xl hover:bg-[#F8F5F0] transition">
+      <button id="calcTalleBtn" class="bg-[var(--neon-cyan)] text-black font-extrabold uppercase text-sm px-6 py-3.5 rounded-xl hover:brightness-125 transition">
         Calcular Talle
       </button>
     </div>
 
-    <div id="talleResultado" class="hidden fade-in bg-[#0d0c0b] border border-[#EADBC8]/30 rounded-2xl p-6 flex items-center gap-6">
-      <div class="font-display text-5xl font-extrabold text-[#EADBC8]" id="talleNumero">--</div>
+    <div id="talleResultado" class="hidden fade-in bg-black border border-[var(--neon-cyan)] rounded-2xl p-6 flex items-center gap-6">
+      <div class="graffiti-font text-5xl text-[var(--neon-cyan)]" id="talleNumero">--</div>
       <div>
-        <p class="font-bold text-[#F8F5F0]">Talle Recomendado</p>
-        <p class="text-xs text-[#A8A099] mt-1">Te sugerimos elegir este número. Si estás entre dos medidas, elegí la más grande.</p>
+        <p class="font-bold text-white">Talle Recomendado</p>
+        <p class="text-xs text-zinc-400">Te sugerimos elegir este número. Si estás entre dos medidas, elegí la más grande.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ ENVIOS ============ -->
-<section id="envios" class="py-14 border-b border-[#EADBC8]/10 bg-[#0d0c0b]">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 grid sm:grid-cols-3 gap-8 text-center">
+<section id="envios" class="py-12 border-b border-zinc-800 bg-black">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 grid sm:grid-cols-3 gap-6 text-center">
     <div>
-      <p class="font-display text-2xl font-bold text-[#EADBC8] mb-1">ENVÍOS</p>
-      <p class="text-[11px] text-[#A8A099] uppercase tracking-widest font-semibold">A todo el país por Correo</p>
+      <p class="graffiti-font text-3xl text-[var(--neon-pink)] mb-1">ENVÍOS</p>
+      <p class="text-xs text-zinc-400 uppercase tracking-widest">A todo el país por Correo</p>
     </div>
     <div>
-      <p class="font-display text-2xl font-bold text-[#EADBC8] mb-1">26 AL 45</p>
-      <p class="text-[11px] text-[#A8A099] uppercase tracking-widest font-semibold">Talles Disponibles</p>
+      <p class="graffiti-font text-3xl text-[var(--neon-green)] mb-1">26 AL 45</p>
+      <p class="text-xs text-zinc-400 uppercase tracking-widest">Talles Disponibles</p>
     </div>
     <div>
-      <p class="font-display text-2xl font-bold text-[#EADBC8] mb-1">MERCADO PAGO</p>
-      <p class="text-[11px] text-[#A8A099] uppercase tracking-widest font-semibold">Pagos 100% Seguros</p>
+      <p class="graffiti-font text-3xl text-[var(--neon-cyan)] mb-1">MERCADO PAGO</p>
+      <p class="text-xs text-zinc-400 uppercase tracking-widest">Pagos 100% Seguros</p>
     </div>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#A8A099] mt-auto">
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
   <div class="flex items-center gap-2">
-    <span class="font-display font-bold text-lg text-[#F8F5F0]">JESER</span>
-    <span>— Urban Streetwear</span>
+    <span class="graffiti-font text-2xl text-[var(--neon-pink)]">JESER</span>
+    <span>— Streetwear & Sneakers</span>
   </div>
   <p>Consultas al WhatsApp: 
-    <a href="https://wa.me/5491131941523" class="text-[#EADBC8] hover:underline font-semibold">11 3194-1523</a> / 
-    <a href="https://wa.me/5491139116989" class="text-[#EADBC8] hover:underline font-semibold">11 3911-6989</a>
+    <a href="https://wa.me/5491131941523" class="text-white hover:text-[var(--neon-green)] font-bold">11 3194-1523</a> / 
+    <a href="https://wa.me/5491139116989" class="text-white hover:text-[var(--neon-green)] font-bold">11 3911-6989</a>
   </p>
 </footer>
 
 <!-- ============ BOTON FLOTANTE WHATSAPP ============ -->
-<a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Tengo%20una%20consulta" target="_blank" class="btn-wa-float bg-[#25D366] text-white p-3.5 rounded-full hover:scale-110 transition flex items-center justify-center">
-  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+<a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Tengo%20una%20consulta" target="_blank" class="btn-wa-float bg-[var(--neon-green)] text-black p-3.5 rounded-full hover:scale-110 transition flex items-center justify-center">
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
   </svg>
 </a>
 
 <!-- ============ MODAL QUICK VIEW ============ -->
 <div id="modalOverlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-  <div id="modalContent" class="fade-in bg-[#161412] border border-[#EADBC8]/20 w-full max-w-2xl rounded-2xl max-h-[90vh] overflow-y-auto">
+  <div id="modalContent" class="fade-in bg-zinc-900 border border-zinc-700 w-full max-w-2xl rounded-2xl max-h-[90vh] overflow-y-auto">
     <!-- Renderizado vía JS -->
   </div>
 </div>
 
 <!-- ============ TOAST ============ -->
-<div id="toast" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#EADBC8] text-[#0d0c0b] font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full z-[60] shadow-2xl"></div>
+<div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--neon-green)] text-black font-extrabold text-sm px-6 py-3 rounded-full z-[60] shadow-xl"></div>
 
 <script>
 /* ================= DATA ================= */
@@ -377,36 +386,32 @@ for(let t=26; t<=45; t++){
 
 function productCard(p){
   return `
-  <div class="brand-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-between" data-id="${p.id}">
-    <div>
-      <div class="relative overflow-hidden bg-[#0d0c0b]">
-        <img src="${p.img}" alt="${p.nombre}" class="card-img w-full group-hover:scale-105 transition duration-500">
-        <span class="absolute top-3 left-3 bg-[#0d0c0b]/90 backdrop-blur border border-[#EADBC8]/20 text-[#EADBC8] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
-          10% OFF Transferencia
-        </span>
-      </div>
-      <div class="p-5">
-        <p class="text-[11px] text-[#A8A099] uppercase font-semibold tracking-wider mb-1">${p.genero}</p>
-        <h3 class="font-bold text-base leading-snug text-[#F8F5F0] mb-3 group-hover:text-[#EADBC8] transition">${p.nombre}</h3>
-        
-        <div class="space-y-1.5 mb-5">
-          <div class="flex items-baseline justify-between">
-            <span class="text-xs text-[#A8A099]">Efectivo / Transferencia:</span>
-            <span class="text-[#EADBC8] font-extrabold text-lg">$${fmt(precioDescuento)}</span>
-          </div>
-          <div class="flex items-baseline justify-between text-xs text-[#A8A099]">
-            <span>Lista / Mercado Pago:</span>
-            <span class="text-[#F8F5F0] font-semibold">$${fmt(PRICE)}</span>
-          </div>
-          <div class="text-[11px] text-[#D0B8A8] text-right font-medium">
-            3 cuotas fijas de $${fmt(cuota3)}
-          </div>
+  <div class="graffiti-card rounded-2xl overflow-hidden cursor-pointer group" data-id="${p.id}">
+    <div class="relative overflow-hidden">
+      <img src="${p.img}" alt="${p.nombre}" class="card-img w-full group-hover:scale-105 transition duration-500">
+      <span class="absolute top-3 left-3 bg-black/80 backdrop-blur border border-[var(--neon-green)] text-[var(--neon-green)] text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md">
+        10% OFF 1 Pago
+      </span>
+    </div>
+    <div class="p-4">
+      <p class="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">${p.genero}</p>
+      <h3 class="font-extrabold text-base leading-tight text-white mb-2 group-hover:text-[var(--neon-pink)] transition">${p.nombre}</h3>
+      
+      <div class="space-y-1 mb-4">
+        <div class="flex items-baseline justify-between">
+          <span class="text-xs text-zinc-400">1 pago (Transferencia):</span>
+          <span class="text-neon-green font-extrabold">$${fmt(precioDescuento)}</span>
+        </div>
+        <div class="flex items-baseline justify-between text-xs text-zinc-400">
+          <span>Lista / Mercado Pago:</span>
+          <span class="text-white font-bold">$${fmt(PRICE)}</span>
+        </div>
+        <div class="text-[11px] text-[var(--neon-cyan)] text-right">
+          O 3 cuotas de $${fmt(cuota3)}
         </div>
       </div>
-    </div>
 
-    <div class="px-5 pb-5 pt-0">
-      <button class="w-full bg-[#25221e] hover:bg-[#EADBC8] hover:text-[#0d0c0b] text-[#F8F5F0] text-xs font-bold uppercase tracking-wider py-3 rounded-xl transition">
+      <button class="w-full bg-zinc-800 hover:bg-[var(--neon-pink)] text-white text-xs font-extrabold uppercase py-2.5 rounded-xl transition">
         Ver Detalle & Comprar
       </button>
     </div>
@@ -441,58 +446,56 @@ function openModal(id){
   for(let t=26; t<=45; t++) talleOpts += `<option value="${t}">${t}</option>`;
 
   modalContent.innerHTML = `
-    <div class="p-6 sm:p-8">
-      <div class="flex justify-between items-center mb-6">
-        <span class="font-display font-bold text-lg text-[#EADBC8] tracking-wider">JESER SELECTION</span>
-        <button id="closeModal" class="text-[#A8A099] hover:text-[#F8F5F0] text-2xl font-bold px-2">&times;</button>
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <span class="graffiti-font text-xl text-[var(--neon-pink)]">JESER DROP</span>
+        <button id="closeModal" class="text-zinc-400 hover:text-white text-2xl font-bold px-2">&times;</button>
       </div>
       
       <div class="grid sm:grid-cols-2 gap-6">
         <div>
-          <img src="${imgs[0]}" alt="${p.nombre}" class="rounded-xl w-full aspect-square object-cover mb-2 border border-[#EADBC8]/10 bg-[#0d0c0b]">
+          <img src="${imgs[0]}" alt="${p.nombre}" class="rounded-xl w-full aspect-square object-cover mb-2 border border-zinc-800">
         </div>
         
-        <div class="flex flex-col justify-between">
-          <div>
-            <h3 class="font-display text-2xl font-bold text-[#F8F5F0] mb-2 leading-tight">${p.nombre}</h3>
-            <p class="text-xs text-[#A8A099] mb-5 leading-relaxed">${p.desc}</p>
+        <div>
+          <h3 class="display-font text-2xl text-white mb-2">${p.nombre}</h3>
+          <p class="text-xs text-zinc-400 mb-4">${p.desc}</p>
 
-            <!-- Precios -->
-            <div class="bg-[#0d0c0b] border border-[#EADBC8]/10 rounded-xl p-4 mb-5 space-y-2">
-              <div class="flex justify-between items-center">
-                <span class="text-xs text-[#A8A099]">1 Pago (10% OFF):</span>
-                <span class="text-[#EADBC8] font-extrabold text-xl">$${fmt(precioDescuento)}</span>
-              </div>
-              <div class="flex justify-between items-center text-xs">
-                <span class="text-[#A8A099]">2 Cuotas fijas:</span>
-                <span class="text-[#F8F5F0] font-semibold">2x $${fmt(cuota2)}</span>
-              </div>
-              <div class="flex justify-between items-center text-xs">
-                <span class="text-[#A8A099]">3 Cuotas fijas:</span>
-                <span class="text-[#D0B8A8] font-semibold">3x $${fmt(cuota3)}</span>
-              </div>
+          <!-- Precios -->
+          <div class="bg-black/50 border border-zinc-800 rounded-xl p-3 mb-4 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-zinc-400">1 Pago (10% OFF):</span>
+              <span class="text-neon-green font-extrabold text-lg">$${fmt(precioDescuento)}</span>
             </div>
-
-            <!-- Selección de Talle -->
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#A8A099] mb-1.5">Elegí tu Talle</label>
-            <select id="modalTalle" class="w-full bg-[#0d0c0b] border border-[#EADBC8]/20 rounded-xl px-3.5 py-2.5 mb-4 text-xs font-bold text-[#F8F5F0] focus:border-[#EADBC8] outline-none">
-              ${talleOpts}
-            </select>
-
-            <!-- Selección de Línea WhatsApp -->
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#A8A099] mb-1.5">Elegí la Línea de WhatsApp</label>
-            <select id="modalWaSelect" class="w-full bg-[#0d0c0b] border border-[#EADBC8]/20 rounded-xl px-3.5 py-2.5 mb-6 text-xs font-bold text-[#F8F5F0] focus:border-[#EADBC8] outline-none">
-              <option value="wa1">WhatsApp 1 (11 3194-1523)</option>
-              <option value="wa2">WhatsApp 2 (11 3911-6989)</option>
-            </select>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-zinc-400">2 Cuotas fijas:</span>
+              <span class="text-[var(--neon-cyan)] font-bold">2x $${fmt(cuota2)}</span>
+            </div>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-zinc-400">3 Cuotas fijas:</span>
+              <span class="text-[var(--neon-pink)] font-bold">3x $${fmt(cuota3)}</span>
+            </div>
           </div>
 
+          <!-- Selección de Talle -->
+          <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Elegí tu Talle</label>
+          <select id="modalTalle" class="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2.5 mb-4 text-sm font-bold text-white focus:border-[var(--neon-pink)] outline-none">
+            ${talleOpts}
+          </select>
+
+          <!-- Selección de Línea WhatsApp -->
+          <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Elegí la Línea de WhatsApp</label>
+          <select id="modalWaSelect" class="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2.5 mb-6 text-sm font-bold text-white focus:border-[var(--neon-pink)] outline-none">
+            <option value="wa1">WhatsApp 1 (11 3194-1523)</option>
+            <option value="wa2">WhatsApp 2 (11 3911-6989)</option>
+          </select>
+
           <!-- Botones de Acción -->
-          <div class="space-y-2.5">
-            <a id="modalWaBtn" href="#" target="_blank" class="block text-center bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] font-bold uppercase text-xs tracking-wider py-3.5 rounded-xl transition">
+          <div class="space-y-2">
+            <a id="modalWaBtn" href="#" target="_blank" class="block text-center bg-[var(--neon-green)] text-black font-extrabold uppercase text-xs py-3 rounded-xl hover:brightness-125 transition">
               Pedir por WhatsApp (1 Pago / Transferencia)
             </a>
-            <a href="https://mpago.la/" target="_blank" class="block text-center bg-[#009EE3] hover:brightness-110 text-white font-bold uppercase text-xs tracking-wider py-3.5 rounded-xl transition">
+            <a href="https://mpago.la/" target="_blank" class="block text-center bg-[#009EE3] text-white font-extrabold uppercase text-xs py-3 rounded-xl hover:brightness-110 transition">
               Pagar por Mercado Pago (2 o 3 cuotas)
             </a>
           </div>
