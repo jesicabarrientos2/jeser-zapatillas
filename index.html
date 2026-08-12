@@ -3,255 +3,568 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JESER — Spider-Man Edition | Urban Sneakers & Streetwear</title>
+<title>JESER — Urban Sneakers & Streetwear</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Fugaz+One&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-dark: #0a0a0f;
-    --card-bg: #121218;
-    --spider-red: #ff1e43;
-    --spider-blue: #0088ff;
-    --spider-yellow: #ffcc00;
-    --spider-web-glow: rgba(255, 255, 255, 0.09);
-    --spider-web-heavy: rgba(255, 255, 255, 0.12);
+    --bg-dark: #0d0c0b;
+    --card-bg: #161412;
+    --card-hover: #1e1b18;
+    --accent-cream: #EADBC8;
+    --accent-beige: #D0B8A8;
+    --accent-brown: #7B5E4B;
+    --accent-dark-brown: #5A4232;
+    --text-primary: #F8F5F0;
+    --text-secondary: #A8A099;
+    --border-subtle: rgba(234, 219, 200, 0.12);
   }
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { 
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
     background-color: var(--bg-dark); 
-    color: #ffffff;
+    color: var(--text-primary);
+  }
+
+  .font-display { font-family: 'Syne', sans-serif; }
+
+  /* Gradient de fondo elegante */
+  .earth-bg {
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(255, 30, 67, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(0, 136, 255, 0.18) 0%, transparent 50%),
-      repeating-radial-gradient(circle at 10% 10%, transparent 0, transparent 60px, var(--spider-web-glow) 61px, transparent 63px),
-      repeating-radial-gradient(circle at 90% 90%, transparent 0, transparent 80px, var(--spider-web-glow) 81px, transparent 83px);
-    background-attachment: fixed;
-  }
-  
-  /* Contenedor principal con efecto de telaraña pesada */
-  .spider-overlay {
-    position: relative;
-    overflow: hidden;
-  }
-  .spider-overlay::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-      repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 120px, var(--spider-web-heavy) 121px, transparent 123px);
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.8;
+      radial-gradient(circle at 15% 15%, rgba(123, 94, 75, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(208, 184, 168, 0.08) 0%, transparent 40%);
   }
 
-  .comic-font { font-family: 'Bangers', cursive; letter-spacing: 1px; }
-  .graffiti-font { font-family: 'Permanent Marker', cursive; }
-  .display-font { font-family: 'Fugaz One', cursive; }
-
-  /* Spider Neon & Comic Text Styles */
-  .text-spider-red {
-    color: var(--spider-red);
-    text-shadow: 0 0 12px rgba(255, 30, 67, 0.7), 0 0 25px rgba(255, 30, 67, 0.4);
-  }
-  .text-spider-blue {
-    color: var(--spider-blue);
-    text-shadow: 0 0 12px rgba(0, 136, 255, 0.7), 0 0 25px rgba(0, 136, 255, 0.4);
-  }
-
-  /* Spider Web Glow Card */
-  .spider-card {
+  /* Tarjetas con estilo moderno */
+  .brand-card {
     background: var(--card-bg);
-    border: 2px solid #1f1f2e;
+    border: 1px solid var(--border-subtle);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
   }
-  .spider-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--spider-red), var(--spider-blue));
-    opacity: 0.6;
-  }
-  .spider-card:hover {
-    border-color: var(--spider-red);
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 35px -5px rgba(255, 30, 67, 0.4), 0 0 20px rgba(0, 136, 255, 0.25);
-  }
-
-  /* Elemento visual clave: La mano lanzando telaraña */
-  .spider-action-wrapper {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    background: #000;
-    border-radius: 20px;
-    border: 3px solid var(--spider-red);
-    overflow: hidden;
-    box-shadow: 0 0 25px rgba(255, 30, 67, 0.5);
-  }
-  
-  /* SVG Mano de Spider-Man lanzando telaraña */
-  .spider-hand-svg {
-    position: absolute;
-    bottom: -20px;
-    left: 20px;
-    width: 180px;
-    height: auto;
-    color: var(--spider-red);
-    filter: drop-shadow(0 0 10px rgba(255, 30, 67, 0.8));
-    z-index: 10;
-  }
-
-  /* SVG Telaraña que sujeta la zapatilla */
-  .spider-web-rope {
-    position: absolute;
-    top: 50px; /* Punto donde sujeta */
-    right: 120px;
-    width: 250px;
-    height: auto;
-    color: rgba(255, 255, 255, 0.9);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
-    z-index: 5;
-    transform: rotate(-15deg);
-  }
-
-  /* Zapatilla sujeta por la telaraña */
-  .snkr-target {
-    position: absolute;
-    top: 80px;
-    right: 30px;
-    width: 220px;
-    height: auto;
-    border-radius: 15px;
-    border: 3px solid #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    z-index: 6;
-  }
-
-  /* Efectos de telaraña radiales más densos detrás de la mano */
-  .spider-web-denso {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-      repeating-radial-gradient(circle at 30% 70%, transparent 0, transparent 30px, rgba(255,255,255,0.06) 31px, transparent 33px),
-      repeating-radial-gradient(circle at 70% 30%, transparent 0, transparent 50px, rgba(255,255,255,0.05) 51px, transparent 53px);
-    z-index: 1;
-  }
-
-  /* Floating spider badge */
-  .spider-badge {
-    background: linear-gradient(135deg, var(--spider-red), #b3001e);
-    color: white;
-    font-family: 'Bangers', cursive;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(255, 30, 67, 0.5);
-    z-index: 20;
+  .brand-card:hover {
+    background: var(--card-hover);
+    border-color: rgba(234, 219, 200, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
   }
 
   /* Botón Flotante WhatsApp */
   .btn-wa-float {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 24px;
+    right: 24px;
     z-index: 100;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   }
 
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-thumb { background: var(--spider-red); border-radius: 4px; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dark-brown); border-radius: 3px; }
+  
+  .card-img { aspect-ratio: 1/1; object-fit: cover; }
+  .fade-in { animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
-<body class="antialiased spider-overlay">
+<body class="antialiased earth-bg min-h-screen flex flex-col">
 
 <!-- ============ HEADER / NAVBAR ============ -->
-<header class="sticky top-0 z-40 bg-[#0a0a0f]/90 backdrop-blur border-b border-red-950/40">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+<header class="sticky top-0 z-40 bg-[#0d0c0b]/90 backdrop-blur-md border-b border-[#EADBC8]/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+    <!-- LOGO JESER -->
     <a href="#top" class="flex items-center gap-3 group">
-      <div class="relative w-11 h-11 flex items-center justify-center bg-zinc-900 rounded-full border-2 border-[var(--spider-red)] group-hover:scale-110 group-hover:border-[var(--spider-blue)] transition shadow-[0_0_15px_rgba(255,30,67,0.5)]">
-        <svg class="w-7 h-7 text-[var(--spider-red)] group-hover:text-[var(--spider-blue)] transition drop-shadow-[0_0_8px_rgba(255,30,67,0.9)]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C11.5 2 11 2.5 11 3V5C9.5 5 8 5.5 7 6.5L5 4.5L3.5 6L6 8.5C5 10 4.5 11.5 4.5 13H2V15H4.5C4.8 17 6 18.8 7.5 20L5.5 22L7 23.5L9.5 21C10.3 21.6 11.1 22 12 22C12.9 22 13.7 21.6 14.5 21L17 23.5L18.5 22L16.5 20C18 18.8 19.2 17 19.5 15H22V13H19.5C19.5 11.5 19 10 18 8.5L20.5 6L19 4.5L17 6.5C16 5.5 14.5 5 13 5V3C13 2.5 12.5 2 12 2ZM12 7C14.2 7 16 8.8 16 11V14C16 16.2 14.2 18 12 18C9.8 18 8 16.2 8 14V11C8 8.8 9.8 7 12 7Z"/>
-        </svg>
+      <div class="w-10 h-10 rounded-full bg-[#1e1b18] border border-[#EADBC8]/20 flex items-center justify-center group-hover:border-[#EADBC8] transition duration-300">
+        <span class="font-display font-extrabold text-[#EADBC8] text-lg">J</span>
       </div>
-      <div class="flex flex-col">
-        <span class="comic-font text-3xl sm:text-4xl text-spider-red tracking-wider rotate-[-2deg] leading-none">JESER</span>
-        <span class="text-[9px] font-black tracking-widest text-[var(--spider-blue)] uppercase -mt-1">Web-Slinger Edition</span>
-      </div>
+      <span class="font-display font-extrabold text-2xl tracking-wider text-[#F8F5F0] group-hover:text-[#EADBC8] transition">JESER</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-300">
-      <a href="#catalogo" class="hover:text-[var(--spider-red)] transition">Catálogo</a>
-      <a href="#talle" class="hover:text-[var(--spider-blue)] transition">Mi Talle</a>
-      <a href="#pago" class="hover:text-[var(--spider-yellow)] transition">Medios de Pago</a>
+
+    <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-[#A8A099]">
+      <a href="#catalogo" class="hover:text-[#EADBC8] transition">Catálogo</a>
+      <a href="#talle" class="hover:text-[#EADBC8] transition">Mi Talle</a>
+      <a href="#pago" class="hover:text-[#EADBC8] transition">Medios de Pago</a>
+      <a href="#envios" class="hover:text-[#EADBC8] transition">Envíos</a>
     </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Quiero%20consultar%20por%20zapatillas" target="_blank" 
+         class="bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] text-xs font-bold uppercase px-3.5 py-2 rounded-full transition flex items-center gap-1">
+         <span>WA 1</span>
+      </a>
+      <a href="https://wa.me/5491139116989?text=Hola%20Jeser!%20Quiero%20consultar%20por%20zapatillas" target="_blank" 
+         class="bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] text-xs font-bold uppercase px-3.5 py-2 rounded-full transition flex items-center gap-1">
+         <span>WA 2</span>
+      </a>
+    </div>
   </div>
 </header>
 
 <!-- ============ HERO SECTION ============ -->
-<section id="top" class="relative overflow-hidden border-b border-zinc-800/80 py-12 sm:py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-center">
+<section id="top" class="relative overflow-hidden border-b border-[#EADBC8]/10 py-16 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
     <div>
-      <div class="inline-flex items-center gap-2 bg-zinc-900/90 border border-[var(--spider-yellow)] px-3 py-1 rounded-full text-[var(--spider-yellow)] text-xs font-bold uppercase tracking-widest mb-4 shadow-[0_0_10px_rgba(255,204,0,0.3)]">
-        <svg class="w-4 h-4 text-[var(--spider-red)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2zm0 3l7.5 13h-15L12 5z"/></svg>
-        <span>⚡ Spider Sense Drops — Más Telarañas, Más Estilo 🇦🇷</span>
+      <div class="inline-flex items-center gap-2 bg-[#161412] border border-[#EADBC8]/20 px-3.5 py-1.5 rounded-full text-[#EADBC8] text-xs font-semibold tracking-wider mb-6">
+        <span>🇦🇷</span> Envíos a todo el país
       </div>
-      <h1 class="display-font text-5xl sm:text-7xl lg:text-8xl leading-none mb-6">
-        EDICIÓN <br><span class="text-spider-red comic-font text-6xl sm:text-8xl lg:text-9xl">WEB-SLINGER</span>
+      <h1 class="font-display text-5xl sm:text-7xl font-extrabold tracking-tight text-[#F8F5F0] leading-none mb-6">
+        URBAN <br><span class="text-[#EADBC8]">STREETWEAR</span>
       </h1>
-      <p class="text-base sm:text-lg text-zinc-300 max-w-md mb-8">
-        Tu sentido arácnido ha mejorado. Presentamos la colección con **más telarañas** de fondo y la acción pura del héroe. Sujetamos tus zapatillas favoritas con estilo. Pagá con <span class="text-[var(--spider-blue)] font-bold">10% OFF</span> en un pago.
+      <p class="text-base sm:text-lg text-[#A8A099] max-w-md mb-8 leading-relaxed">
+        Zapatillas seleccionadas al mejor precio del mercado. Pagá en <span class="text-[#F8F5F0] font-semibold">1 pago con 10% OFF</span> o en <span class="text-[#EADBC8] font-semibold">2 y 3 cuotas fijas</span> por Mercado Pago o Transferencia.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a href="#catalogo" class="bg-gradient-to-r from-[var(--spider-red)] to-red-700 text-white font-extrabold uppercase text-sm px-8 py-4 rounded-xl hover:shadow-[0_0_25px_rgba(255,30,67,0.8)] transition transform hover:-translate-y-0.5">
-          Atrapar Catálogo 🕸️
+        <a href="#catalogo" class="bg-[#EADBC8] text-[#0d0c0b] font-bold uppercase text-xs tracking-wider px-8 py-4 rounded-xl hover:bg-[#F8F5F0] transition shadow-lg">
+          Ver Modelos
+        </a>
+        <a href="#pago" class="border border-[#EADBC8]/30 text-[#EADBC8] font-bold uppercase text-xs tracking-wider px-8 py-4 rounded-xl hover:bg-[#EADBC8]/10 transition">
+          Ver Cuotas
         </a>
       </div>
     </div>
 
-    <!-- Banner Principal Modificado: Mano lanzando telaraña sujeta zapatilla -->
+    <!-- Banner Destacado -->
     <div class="relative flex justify-center items-center">
-      <div class="spider-action-wrapper">
-        <div class="spider-web-denso"></div> <!-- Más telarañas de fondo -->
-        
-        <div class="absolute -top-4 -right-4 spider-badge px-4 py-1.5 rounded-full rotate-[10deg] text-sm font-bold uppercase">
-          ¡CAPTURADA!
+      <div class="brand-card p-6 rounded-3xl max-w-sm w-full relative">
+        <div class="absolute -top-3 -right-3 bg-[#7B5E4B] text-[#F8F5F0] font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+          10% OFF Transferencia
         </div>
-        
-        <!-- Mano de Spider-Man (SVG) -->
-        <svg class="spider-hand-svg" fill="none" stroke="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 80C15 85 25 88 35 88C45 88 55 85 60 80L90 40C95 35 90 25 80 20C70 15 60 20 55 25L25 65C20 70 15 70 10 70C5 70 2 75 10 80Z" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 65C28 62 32 60 36 60M36 60L66 30M36 60L60 25" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="20" cy="75" r="4" fill="currentColor"/>
-        </svg>
-        
-        <!-- Cuerda de Telaraña (SVG) -->
-        <svg class="spider-web-rope" fill="none" stroke="currentColor" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 190C15 170 30 160 50 160C70 160 85 170 90 190M50 160V10C40 20 30 30 10 40M50 10C60 20 70 30 90 40M50 10V160" stroke-width="2" stroke-dasharray="6 6"/>
-          <path d="M30 40L50 10L70 40" stroke-width="2"/>
-        </svg>
-
-        <!-- Zapatilla Sujeta -->
-        <img src="images/p9.jpg" alt="Zapatilla Capturada Jeser" class="snkr-target">
-
-        <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-3 py-1 rounded-lg border border-[var(--spider-red)] text-xs text-[var(--spider-yellow)] font-bold z-10 comic-font tracking-wider">
-          🕷️ Spider Drop #1
+        <img src="images/p9.jpg" alt="Zapatilla Jeser" class="rounded-2xl mb-5 w-full h-60 object-cover">
+        <div class="flex justify-between items-center mb-3">
+          <span class="font-display font-bold text-xl text-[#F8F5F0]">URBAN SELECTION</span>
+          <span class="text-[11px] bg-[#25221e] text-[#A8A099] px-2.5 py-1 rounded-md font-medium">Talles 26 a 45</span>
+        </div>
+        <div class="border-t border-[#EADBC8]/10 pt-4 flex justify-between items-end">
+          <div>
+            <p class="text-[11px] text-[#A8A099] uppercase font-medium">1 Pago (Contando 10% OFF)</p>
+            <p class="text-[#EADBC8] font-extrabold text-2xl">$89.550</p>
+          </div>
+          <div class="text-right">
+            <p class="text-[11px] text-[#A8A099] uppercase font-medium">Lista / Cuotas</p>
+            <p class="text-[#F8F5F0] font-bold text-base">$99.500</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- El resto de las secciones (Catálogo, Pagos, Talles) permanecen, pero el body ya tiene las telarañas extra -->
 <!-- ============ FILTROS ============ -->
-<section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-6">
+<section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-6">
   <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
     <div>
-      <p class="comic-font text-2xl text-[var(--spider-blue)] tracking-wider">Spider Drops & Releases 🕸️</p>
-      <h2 class="display-font text-3xl sm:text-4xl text-white">Catálogo de Zapatillas</h2>
+      <p class="text-xs font-bold uppercase tracking-widest text-[#7B5E4B] mb-1">Drops & Releases</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-[#F8F5F0]">Catálogo de Zapatillas</h2>
+    </div>
+    <div class="grid grid-cols-2 sm:flex gap-3">
+      <select id="filterGenero" class="bg-[#161412] border border-[#EADBC8]/20 text-[#F8F5F0] rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider focus:border-[#EADBC8] outline-none">
+        <option value="todos">Todos los Géneros</option>
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
+      </select>
+      <select id="filterTalle" class="bg-[#161412] border border-[#EADBC8]/20 text-[#F8F5F0] rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider focus:border-[#EADBC8] outline-none">
+        <option value="todos">Talles: Todos</option>
+      </select>
     </div>
   </div>
-</head>
-<body class="antialiased spider-overlay">
-<!-- ... (Resto del HTML que se cargará dinámicamente) ... -->
+</section>
+
+<!-- ============ GRID PRODUCTOS ============ -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+  <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  <p id="emptyState" class="hidden text-center text-[#A8A099] py-16 text-sm">No encontramos modelos con esos filtros.</p>
+</section>
+
+<!-- ============ MEDIOS DE PAGO Y CUOTAS ============ -->
+<section id="pago" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-[#EADBC8]/10">
+  <div class="text-center max-w-2xl mx-auto mb-14">
+    <p class="text-xs font-bold uppercase tracking-widest text-[#7B5E4B] mb-1">Facilidades de Pago</p>
+    <h2 class="font-display text-3xl sm:text-4xl text-[#F8F5F0]">Elegí cómo pagar tu par</h2>
+    <p class="text-[#A8A099] text-sm mt-2">Aceptamos Mercado Pago, transferencias bancarias y tarjetas de crédito/débito.</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- OPCION 1 PAGO -->
+    <div class="brand-card rounded-2xl p-6 border-t-2 border-t-[#EADBC8] flex flex-col justify-between">
+      <div>
+        <span class="bg-[#EADBC8]/10 text-[#EADBC8] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mejor Precio</span>
+        <h3 class="font-display text-xl font-bold mt-4 text-[#F8F5F0]">1 Pago / Transferencia</h3>
+        <p class="text-xs text-[#A8A099] mt-1 mb-5">Aprovechá un 10% de descuento directo sobre el valor total.</p>
+        <p class="text-[#EADBC8] font-extrabold text-3xl mb-1">$89.550</p>
+        <p class="text-xs text-[#A8A099]">Precio de lista: $99.500</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-[#EADBC8]/10">
+        <button id="copyCvuBtn" class="w-full bg-[#25221e] hover:bg-[#7B5E4B] hover:text-[#F8F5F0] text-[#EADBC8] font-bold py-3.5 rounded-xl transition text-xs uppercase tracking-wider">
+          Copiar CVU para Transferir
+        </button>
+      </div>
+    </div>
+
+    <!-- OPCION 2 CUOTAS -->
+    <div class="brand-card rounded-2xl p-6 border-t-2 border-t-[#7B5E4B] flex flex-col justify-between">
+      <div>
+        <span class="bg-[#7B5E4B]/20 text-[#EADBC8] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Financiado</span>
+        <h3 class="font-display text-xl font-bold mt-4 text-[#F8F5F0]">2 Cuotas Sin Interés</h3>
+        <p class="text-xs text-[#A8A099] mt-1 mb-5">Pagá en 2 cuotas fijas por Mercado Pago o WhatsApp.</p>
+        <p class="text-[#F8F5F0] font-extrabold text-3xl mb-1">2x $49.750</p>
+        <p class="text-xs text-[#A8A099]">Total a pagar: $99.500</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-[#EADBC8]/10">
+        <a href="https://mpago.la/" target="_blank" class="block text-center w-full bg-[#009EE3] hover:brightness-110 text-white font-bold py-3.5 rounded-xl transition text-xs uppercase tracking-wider">
+          Pagar con Mercado Pago
+        </a>
+      </div>
+    </div>
+
+    <!-- OPCION 3 CUOTAS -->
+    <div class="brand-card rounded-2xl p-6 border-t-2 border-t-[#D0B8A8] flex flex-col justify-between">
+      <div>
+        <span class="bg-[#D0B8A8]/20 text-[#EADBC8] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
+        <h3 class="font-display text-xl font-bold mt-4 text-[#F8F5F0]">3 Cuotas Sin Interés</h3>
+        <p class="text-xs text-[#A8A099] mt-1 mb-5">Llevátelas hoy y pagalas cómodamente en 3 cuotas.</p>
+        <p class="text-[#EADBC8] font-extrabold text-3xl mb-1">3x $33.167</p>
+        <p class="text-xs text-[#A8A099]">Total a pagar: $99.500</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-[#EADBC8]/10 flex gap-2">
+        <a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Quiero%20comprar%20en%203%20cuotas" target="_blank" 
+           class="block text-center w-1/2 bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] font-bold py-3 rounded-xl transition text-[10px] uppercase tracking-wider">
+          Link (WA 1)
+        </a>
+        <a href="https://wa.me/5491139116989?text=Hola%20Jeser!%20Quiero%20comprar%20en%203%20cuotas" target="_blank" 
+           class="block text-center w-1/2 bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] font-bold py-3 rounded-xl transition text-[10px] uppercase tracking-wider">
+          Link (WA 2)
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMULADOR DE TALLE ============ -->
+<section id="talle" class="bg-[#161412]/50 border-y border-[#EADBC8]/10 py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-[#7B5E4B] mb-1">Guía rápida</p>
+    <h2 class="font-display text-3xl sm:text-4xl text-[#F8F5F0] mb-2">Calculador de Talle</h2>
+    <p class="text-[#A8A099] mb-8 text-sm">Medí tu pie desde el talón a la punta en centímetros y descubrí tu talle en Jeser.</p>
+
+    <div class="grid sm:grid-cols-[1fr_auto] gap-4 items-end mb-6">
+      <div>
+        <label for="footCm" class="block text-xs font-bold uppercase tracking-wider text-[#A8A099] mb-2">Largo de pie (cm)</label>
+        <input id="footCm" type="number" step="0.1" min="14" max="30" placeholder="Ej: 24.5"
+          class="w-full bg-[#0d0c0b] border border-[#EADBC8]/20 rounded-xl px-4 py-3.5 text-lg font-bold text-[#F8F5F0] focus:border-[#EADBC8] outline-none">
+      </div>
+      <button id="calcTalleBtn" class="bg-[#EADBC8] text-[#0d0c0b] font-bold uppercase text-xs tracking-wider px-8 py-4 rounded-xl hover:bg-[#F8F5F0] transition">
+        Calcular Talle
+      </button>
+    </div>
+
+    <div id="talleResultado" class="hidden fade-in bg-[#0d0c0b] border border-[#EADBC8]/30 rounded-2xl p-6 flex items-center gap-6">
+      <div class="font-display text-5xl font-extrabold text-[#EADBC8]" id="talleNumero">--</div>
+      <div>
+        <p class="font-bold text-[#F8F5F0]">Talle Recomendado</p>
+        <p class="text-xs text-[#A8A099] mt-1">Te sugerimos elegir este número. Si estás entre dos medidas, elegí la más grande.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENVIOS ============ -->
+<section id="envios" class="py-14 border-b border-[#EADBC8]/10 bg-[#0d0c0b]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 grid sm:grid-cols-3 gap-8 text-center">
+    <div>
+      <p class="font-display text-2xl font-bold text-[#EADBC8] mb-1">ENVÍOS</p>
+      <p class="text-[11px] text-[#A8A099] uppercase tracking-widest font-semibold">A todo el país por Correo</p>
+    </div>
+    <div>
+      <p class="font-display text-2xl font-bold text-[#EADBC8] mb-1">26 AL 45</p>
+      <p class="text-[11px] text-[#A8A099] uppercase tracking-widest font-semibold">Talles Disponibles</p>
+    </div>
+    <div>
+      <p class="font-display text-2xl font-bold text-[#EADBC8] mb-1">MERCADO PAGO</p>
+      <p class="text-[11px] text-[#A8A099] uppercase tracking-widest font-semibold">Pagos 100% Seguros</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#A8A099] mt-auto">
+  <div class="flex items-center gap-2">
+    <span class="font-display font-bold text-lg text-[#F8F5F0]">JESER</span>
+    <span>— Urban Streetwear</span>
+  </div>
+  <p>Consultas al WhatsApp: 
+    <a href="https://wa.me/5491131941523" class="text-[#EADBC8] hover:underline font-semibold">11 3194-1523</a> / 
+    <a href="https://wa.me/5491139116989" class="text-[#EADBC8] hover:underline font-semibold">11 3911-6989</a>
+  </p>
+</footer>
+
+<!-- ============ BOTON FLOTANTE WHATSAPP ============ -->
+<a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Tengo%20una%20consulta" target="_blank" class="btn-wa-float bg-[#25D366] text-white p-3.5 rounded-full hover:scale-110 transition flex items-center justify-center">
+  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+  </svg>
+</a>
+
+<!-- ============ MODAL QUICK VIEW ============ -->
+<div id="modalOverlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div id="modalContent" class="fade-in bg-[#161412] border border-[#EADBC8]/20 w-full max-w-2xl rounded-2xl max-h-[90vh] overflow-y-auto">
+    <!-- Renderizado vía JS -->
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#EADBC8] text-[#0d0c0b] font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full z-[60] shadow-2xl"></div>
+
+<script>
+/* ================= DATA ================= */
+const WHATSAPP_NUMBERS = {
+  wa1: "5491131941523",
+  wa2: "5491139116989"
+};
+const PRICE = 99500;
+const DESCUENTO_PCT = 10;
+
+const productos = [
+  { id:1,  nombre:"Air Jordan 1 Low Green Toe", genero:"unisex", img:"images/p1.jpg",  desc:"Cuero de alta calidad con swoosh verde militar. Ícono de la cultura urbana." },
+  { id:2,  nombre:"Nike Air Force 1 Personalizadas", genero:"unisex", img:"images/p2.jpg", desc:"Air Force 1 clásicas con detalles exclusivos y charms en los cordones." },
+  { id:3,  nombre:"Adidas Campus 00s Beige", genero:"mujer", img:"images/p3.jpg", desc:"Gamuza beige con stripes anchas y suela chunky retro." },
+  { id:4,  nombre:"Air Jordan 13 Cap & Gown", genero:"hombre", img:"images/p4.jpg", desc:"Blackout total con acabados premium y textura holográfica." },
+  { id:5,  nombre:"Air Jordan 1 Low Mocha", genero:"unisex", img:"images/p5.jpg", images:["images/p5.jpg","images/p6.jpg"], desc:"Tonos tierra, blanco y suela gum. Una silueta highly codiciada." },
+  { id:6,  nombre:"Air Jordan 1 High Pearl", genero:"mujer", img:"images/p7.jpg", desc:"Acabado perlado con destellos de color según la luz." },
+  { id:7,  nombre:"Adidas Superstar Monogram", genero:"mujer", img:"images/p8.jpg", desc:"Punta de goma icónica con patrón monogram grabado." },
+  { id:8,  nombre:"Air Jordan 1 Low Black Toe", genero:"unisex", img:"images/p9.jpg", desc:"El esquema de color más famoso de la historia del basket." },
+  { id:9,  nombre:"Adidas Superstar Classic", genero:"unisex", img:"images/p10.jpg", desc:"Blanco y negro esencial para cualquier outfit callejero." },
+  { id:10, nombre:"Air Jordan 1 High Denim", genero:"unisex", img:"images/p11.jpg", desc:"Textura tipo jean con detalles metálicos cobre." },
+  { id:11, nombre:"Nike Air More Uptempo Blanca", genero:"hombre", img:"images/p12.jpg", desc:"Estilo noventero voluminoso en blanco puro." },
+  { id:12, nombre:"Air Jordan 13 Flint Grey", genero:"hombre", img:"images/p13.jpg", desc:"Combinación de gris, azul y blanco con paneles reflectivos." },
+  { id:13, nombre:"Air Jordan 4 Pure Money", genero:"unisex", img:"images/p14.jpg", desc:"Estética total white con acentos en plata cromada." },
+  { id:14, nombre:"Nike Air Force 1 Cordón Soga", genero:"hombre", img:"images/p15.jpg", desc:"Cordón grueso estilo cuerda para un look customizado." },
+  { id:15, nombre:"Adidas Forum Low", genero:"hombre", img:"images/p16.jpg", desc:"Diseño retro básquet en tonos neutros con llavero de regalo." },
+  { id:16, nombre:"Nike Dunk Low Polar Blue", genero:"mujer", img:"images/p17.jpg", desc:"Azul celeste y blanco sobre suela semitransparente." },
+  { id:17, nombre:"Adidas Superstar XLG Crema", genero:"mujer", img:"images/p18.jpg", desc:"Suela sobredimensionada en tono crema vintage." },
+  { id:18, nombre:"Air Jordan 3 Black Cat", genero:"hombre", img:"images/p20.jpg", desc:"Negro sigiloso con print de elefante en talón y puntera." }
+];
+
+const sizeChart = [
+  [16.5,26],[17,27],[17.5,28],[18,29],[18.5,30],[19,31],[19.5,32],[20,33],
+  [20.5,34],[21,35],[21.5,36],[22,37],[22.5,38],[23,39],[23.5,40],
+  [24,41],[24.5,42],[25,43],[25.5,44],[26,45]
+];
+
+const fmt = n => n.toLocaleString('es-AR');
+const precioDescuento = Math.round(PRICE * (1 - DESCUENTO_PCT/100));
+const cuota2 = Math.round(PRICE / 2);
+const cuota3 = Math.round(PRICE / 3);
+
+function waLink(msg, numKey = 'wa1'){
+  const number = WHATSAPP_NUMBERS[numKey] || WHATSAPP_NUMBERS.wa1;
+  return `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+}
+
+/* ================= RENDER CATALOGO ================= */
+const grid = document.getElementById('grid');
+const emptyState = document.getElementById('emptyState');
+const filterGenero = document.getElementById('filterGenero');
+const filterTalle = document.getElementById('filterTalle');
+
+for(let t=26; t<=45; t++){
+  const opt = document.createElement('option');
+  opt.value = t; opt.textContent = "Talle " + t;
+  filterTalle.appendChild(opt);
+}
+
+function productCard(p){
+  return `
+  <div class="brand-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-between" data-id="${p.id}">
+    <div>
+      <div class="relative overflow-hidden bg-[#0d0c0b]">
+        <img src="${p.img}" alt="${p.nombre}" class="card-img w-full group-hover:scale-105 transition duration-500">
+        <span class="absolute top-3 left-3 bg-[#0d0c0b]/90 backdrop-blur border border-[#EADBC8]/20 text-[#EADBC8] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+          10% OFF Transferencia
+        </span>
+      </div>
+      <div class="p-5">
+        <p class="text-[11px] text-[#A8A099] uppercase font-semibold tracking-wider mb-1">${p.genero}</p>
+        <h3 class="font-bold text-base leading-snug text-[#F8F5F0] mb-3 group-hover:text-[#EADBC8] transition">${p.nombre}</h3>
+        
+        <div class="space-y-1.5 mb-5">
+          <div class="flex items-baseline justify-between">
+            <span class="text-xs text-[#A8A099]">Efectivo / Transferencia:</span>
+            <span class="text-[#EADBC8] font-extrabold text-lg">$${fmt(precioDescuento)}</span>
+          </div>
+          <div class="flex items-baseline justify-between text-xs text-[#A8A099]">
+            <span>Lista / Mercado Pago:</span>
+            <span class="text-[#F8F5F0] font-semibold">$${fmt(PRICE)}</span>
+          </div>
+          <div class="text-[11px] text-[#D0B8A8] text-right font-medium">
+            3 cuotas fijas de $${fmt(cuota3)}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-5 pb-5 pt-0">
+      <button class="w-full bg-[#25221e] hover:bg-[#EADBC8] hover:text-[#0d0c0b] text-[#F8F5F0] text-xs font-bold uppercase tracking-wider py-3 rounded-xl transition">
+        Ver Detalle & Comprar
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderGrid(){
+  const g = filterGenero.value;
+  const filtered = productos.filter(p => g === 'todos' || p.genero === g || p.genero === 'unisex');
+  grid.innerHTML = filtered.map(productCard).join('');
+  emptyState.classList.toggle('hidden', filtered.length > 0);
+
+  grid.querySelectorAll('[data-id]').forEach(el=>{
+    el.addEventListener('click', ()=> openModal(Number(el.dataset.id)));
+  });
+}
+
+filterGenero.addEventListener('change', renderGrid);
+filterTalle.addEventListener('change', renderGrid);
+renderGrid();
+
+/* ================= MODAL / DETALLE DE COMPRA ================= */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+
+function openModal(id){
+  const p = productos.find(x=>x.id === id);
+  if(!p) return;
+  const imgs = p.images || [p.img];
+  
+  let talleOpts = '';
+  for(let t=26; t<=45; t++) talleOpts += `<option value="${t}">${t}</option>`;
+
+  modalContent.innerHTML = `
+    <div class="p-6 sm:p-8">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-display font-bold text-lg text-[#EADBC8] tracking-wider">JESER SELECTION</span>
+        <button id="closeModal" class="text-[#A8A099] hover:text-[#F8F5F0] text-2xl font-bold px-2">&times;</button>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <img src="${imgs[0]}" alt="${p.nombre}" class="rounded-xl w-full aspect-square object-cover mb-2 border border-[#EADBC8]/10 bg-[#0d0c0b]">
+        </div>
+        
+        <div class="flex flex-col justify-between">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-[#F8F5F0] mb-2 leading-tight">${p.nombre}</h3>
+            <p class="text-xs text-[#A8A099] mb-5 leading-relaxed">${p.desc}</p>
+
+            <!-- Precios -->
+            <div class="bg-[#0d0c0b] border border-[#EADBC8]/10 rounded-xl p-4 mb-5 space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-[#A8A099]">1 Pago (10% OFF):</span>
+                <span class="text-[#EADBC8] font-extrabold text-xl">$${fmt(precioDescuento)}</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-[#A8A099]">2 Cuotas fijas:</span>
+                <span class="text-[#F8F5F0] font-semibold">2x $${fmt(cuota2)}</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-[#A8A099]">3 Cuotas fijas:</span>
+                <span class="text-[#D0B8A8] font-semibold">3x $${fmt(cuota3)}</span>
+              </div>
+            </div>
+
+            <!-- Selección de Talle -->
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#A8A099] mb-1.5">Elegí tu Talle</label>
+            <select id="modalTalle" class="w-full bg-[#0d0c0b] border border-[#EADBC8]/20 rounded-xl px-3.5 py-2.5 mb-4 text-xs font-bold text-[#F8F5F0] focus:border-[#EADBC8] outline-none">
+              ${talleOpts}
+            </select>
+
+            <!-- Selección de Línea WhatsApp -->
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#A8A099] mb-1.5">Elegí la Línea de WhatsApp</label>
+            <select id="modalWaSelect" class="w-full bg-[#0d0c0b] border border-[#EADBC8]/20 rounded-xl px-3.5 py-2.5 mb-6 text-xs font-bold text-[#F8F5F0] focus:border-[#EADBC8] outline-none">
+              <option value="wa1">WhatsApp 1 (11 3194-1523)</option>
+              <option value="wa2">WhatsApp 2 (11 3911-6989)</option>
+            </select>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div class="space-y-2.5">
+            <a id="modalWaBtn" href="#" target="_blank" class="block text-center bg-[#7B5E4B] hover:bg-[#5A4232] text-[#F8F5F0] font-bold uppercase text-xs tracking-wider py-3.5 rounded-xl transition">
+              Pedir por WhatsApp (1 Pago / Transferencia)
+            </a>
+            <a href="https://mpago.la/" target="_blank" class="block text-center bg-[#009EE3] hover:brightness-110 text-white font-bold uppercase text-xs tracking-wider py-3.5 rounded-xl transition">
+              Pagar por Mercado Pago (2 o 3 cuotas)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const talleSel = modalContent.querySelector('#modalTalle');
+  const waSel = modalContent.querySelector('#modalWaSelect');
+  const waBtn = modalContent.querySelector('#modalWaBtn');
+
+  function updateWa(){
+    const msg = `Hola Jeser! Quiero comprar las ${p.nombre} en Talle ${talleSel.value}. ¿Tienen stock?`;
+    waBtn.href = waLink(msg, waSel.value);
+  }
+  talleSel.addEventListener('change', updateWa);
+  waSel.addEventListener('change', updateWa);
+  updateWa();
+
+  modalContent.querySelector('#closeModal').addEventListener('click', closeModal);
+  modalOverlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  modalOverlay.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+modalOverlay.addEventListener('click', e => { if(e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* ================= CALCULADOR TALLE ================= */
+document.getElementById('calcTalleBtn').addEventListener('click', ()=>{
+  const cm = parseFloat(document.getElementById('footCm').value);
+  const resultBox = document.getElementById('talleResultado');
+  const talleNumero = document.getElementById('talleNumero');
+  if(!cm || cm < 14 || cm > 30){
+    showToast('Ingresá una medida válida en cm (14 a 30).');
+    return;
+  }
+  let best = sizeChart[0];
+  for(const row of sizeChart){
+    if(Math.abs(row[0]-cm) < Math.abs(best[0]-cm)) best = row;
+  }
+  talleNumero.textContent = best[1];
+  resultBox.classList.remove('hidden');
+});
+
+/* ================= COPIAR CVU ================= */
+const copyCvuBtn = document.getElementById('copyCvuBtn');
+const CVU = "0000003100088773099535";
+copyCvuBtn.addEventListener('click', async ()=>{
+  try {
+    await navigator.clipboard.writeText(CVU);
+  } catch(e) {
+    const ta = document.createElement('textarea');
+    ta.value = CVU; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+  }
+  showToast('¡CVU copiado al portapapeles!');
+});
+
+/* ================= TOAST ================= */
+let toastTimer;
+function showToast(text){
+  const toast = document.getElementById('toast');
+  toast.textContent = text;
+  toast.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> toast.classList.add('hidden'), 2500);
+}
+</script>
+</body>
+</html>
