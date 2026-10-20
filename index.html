@@ -124,7 +124,7 @@
         JESER <br><span class="text-neon-red graffiti-font">ESTILO URBANO</span>
       </h1>
       <p class="text-base sm:text-lg text-zinc-300 max-w-md mb-8">
-        Las zapatillas más buscadas con la mejor calidad urbana. Pagá en <span class="text-white font-bold">1 pago con 10% OFF</span> o en <span class="text-[var(--brand-blue)] font-bold">2 y 3 cuotas fijas</span> por Mercado Pago o Transferencia.
+        Las zapatillas más buscadas con la mejor calidad urbana. Pagá en <span class="text-white font-bold">1 pago</span> o en <span class="text-[var(--brand-blue)] font-bold">2 y 3 cuotas fijas</span> por Mercado Pago o Transferencia.
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="#catalogo" class="bg-[var(--brand-red)] text-white font-extrabold uppercase text-sm px-8 py-4 rounded-xl hover:shadow-[0_0_25px_rgba(255,0,60,0.8)] transition">
@@ -139,9 +139,7 @@
     <!-- Banner con tarjeta rotativa -->
     <div class="relative flex justify-center items-center">
       <div class="graffiti-card p-6 rounded-3xl max-w-sm w-full rotate-[3deg] relative">
-        <div class="absolute -top-4 -right-4 bg-[var(--brand-yellow)] text-black font-extrabold text-xs uppercase px-3 py-1 rounded-full rotate-[12deg] shadow-lg z-10">
-          10% OFF Transferencia
-        </div>
+        
         <div class="overflow-hidden rounded-2xl mb-4 h-56 border border-zinc-800 relative bg-black">
           <img id="heroRotativeImg" src="1.jpeg" alt="Zapatilla Jeser Portada" class="hero-img-transition w-full h-full object-cover">
         </div>
@@ -151,7 +149,7 @@
         </div>
         <div class="border-t border-zinc-800 pt-3 flex justify-between items-end">
           <div>
-            <p class="text-xs text-zinc-500 uppercase">1 Pago (Con 10% OFF)</p>
+            <p class="text-xs text-zinc-500 uppercase">Precio Final (1 Pago)</p>
             <p class="text-[var(--brand-blue)] font-extrabold text-2xl" id="heroPriceDiscount">$76.950</p>
           </div>
           <div class="text-right">
@@ -216,7 +214,7 @@
       <div>
         <span class="bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] text-xs font-bold px-3 py-1 rounded-full uppercase">Mejor Precio</span>
         <h3 class="display-font text-2xl mt-3">1 Pago / Transferencia</h3>
-        <p class="text-xs text-zinc-400 mt-1 mb-4">Aprovechá un 10% de descuento directo sobre el valor total.</p>
+        <p class="text-xs text-zinc-400 mt-1 mb-4">Pago directo en 1 cuota por transferencia o efectivo.</p>
         <p class="text-[var(--brand-blue)] font-extrabold text-4xl mb-2">$76.950</p>
         <p class="text-xs text-zinc-500">Precio de lista: $85.500</p>
       </div>
@@ -347,7 +345,7 @@ const WHATSAPP_NUMBERS = {
   wa1: "5491131941523",
   wa2: "5491139116989"
 };
-const DESCUENTO_PCT = 10;
+const DESCUENTO_PCT = 0;
 
 const productos = [
   { id:1,  nombre:"Air Jordan 1 Low Classic", genero:"unisex", precio: 85500, img:"1.jpeg", desc:"Estilo urbano atemporal con acabados premium y diseño clásico." },
@@ -374,20 +372,20 @@ const productos = [
   { id:22, nombre:"Nike Dunk Low Polar Blue", genero:"mujer", precio: 85500, img:"images/p17.jpg", desc:"Azul celeste y blanco sobre suela semitransparente." },
   { id:23, nombre:"Adidas Superstar XLG Crema", genero:"mujer", precio: 85500, img:"images/p18.jpg", desc:"Suela sobredimensionada en tono crema vintage." },
   { id:24, nombre:"Air Jordan 3 Black Cat", genero:"hombre", precio: 85500, img:"images/p20.jpg", desc:"Negro sigiloso con print de elefante en talón y puntera." },
-  { id:25, nombre:"Verano Model 86", genero:"unisex", precio: 39000, img:"86.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:26, nombre:"Verano Model 87", genero:"unisex", precio: 39000, img:"87.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:27, nombre:"Verano Model 88", genero:"unisex", precio: 39000, img:"88.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:28, nombre:"Verano Model 89", genero:"unisex", precio: 39000, img:"89.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:29, nombre:"Verano Model 90", genero:"unisex", precio: 39000, img:"90.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:30, nombre:"Verano Model 91", genero:"unisex", precio: 39000, img:"91.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:31, nombre:"Verano Model 92", genero:"unisex", precio: 39000, img:"92.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:32, nombre:"Verano Model 93", genero:"unisex", precio: 39000, img:"93.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:33, nombre:"Verano Model 94", genero:"unisex", precio: 39000, img:"94.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:34, nombre:"Verano Model 95", genero:"unisex", precio: 39000, img:"95.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:35, nombre:"Verano Model 96", genero:"unisex", precio: 39000, img:"96.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:36, nombre:"Verano Model 97", genero:"unisex", precio: 39000, img:"97.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:37, nombre:"Verano Model 98", genero:"unisex", precio: 39000, img:"98.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
-  { id:38, nombre:"Verano Model 99", genero:"unisex", precio: 39000, img:"99.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." }
+  { id:25, nombre:"Verano Model 86", genero:"unisex", precio: 39999, img:"86.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:26, nombre:"Verano Model 87", genero:"unisex", precio: 39999, img:"87.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:27, nombre:"Verano Model 88", genero:"unisex", precio: 39999, img:"88.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:28, nombre:"Verano Model 89", genero:"unisex", precio: 39999, img:"89.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:29, nombre:"Verano Model 90", genero:"unisex", precio: 39999, img:"90.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:30, nombre:"Verano Model 91", genero:"unisex", precio: 39999, img:"91.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:31, nombre:"Verano Model 92", genero:"unisex", precio: 39999, img:"92.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:32, nombre:"Verano Model 93", genero:"unisex", precio: 39999, img:"93.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:33, nombre:"Verano Model 94", genero:"unisex", precio: 39999, img:"94.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:34, nombre:"Verano Model 95", genero:"unisex", precio: 39999, img:"95.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:35, nombre:"Verano Model 96", genero:"unisex", precio: 39999, img:"96.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:36, nombre:"Verano Model 97", genero:"unisex", precio: 39999, img:"97.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:37, nombre:"Verano Model 98", genero:"unisex", precio: 39999, img:"98.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." },
+  { id:38, nombre:"Verano Model 99", genero:"unisex", precio: 39999, img:"99.jpeg", desc:"Modelo exclusivo de temporada con diseño fresco y urbano." }
 ];
 
 const sizeChart = [
@@ -448,14 +446,14 @@ for(let t=26; t<=45; t++){
 
 function productCard(p){
   const pDesc = Math.round(p.precio * (1 - DESCUENTO_PCT/100));
-  const isOferta = p.precio === 39000;
+  const isOferta = p.precio === 39999;
 
   return `
   <div class="graffiti-card rounded-2xl overflow-hidden cursor-pointer group" data-id="${p.id}">
     <div class="relative overflow-hidden">
       <img src="${p.img}" alt="${p.nombre}" class="card-img w-full group-hover:scale-105 transition duration-500">
       <span class="absolute top-3 left-3 bg-black/80 backdrop-blur border border-[var(--brand-red)] text-[var(--brand-red)] text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md">
-        ${isOferta ? 'OFERTA' : '10% OFF 1 Pago'}
+        ${isOferta ? 'OFERTA' : 'PRECIO FINAL'}
       </span>
     </div>
     <div class="p-4">
@@ -464,7 +462,7 @@ function productCard(p){
       
       <div class="space-y-1 mb-4">
         <div class="flex items-baseline justify-between">
-          <span class="text-xs text-zinc-400">${isOferta ? 'Precio Oferta:' : '1 pago (Transferencia):'}</span>
+          <span class="text-xs text-zinc-400">${isOferta ? 'Precio Oferta:' : 'Precio Final:'}</span>
           <span class="text-[var(--brand-blue)] font-extrabold">$${fmt(isOferta ? p.precio : pDesc)}</span>
         </div>
         ${!isOferta ? `
@@ -516,7 +514,7 @@ function openModal(id){
   const p = productos.find(x=>x.id === id);
   if(!p) return;
   const imgs = p.images || [p.img];
-  const isOferta = p.precio === 39000;
+  const isOferta = p.precio === 39999;
   const pDesc = Math.round(p.precio * (1 - DESCUENTO_PCT/100));
   const c2 = Math.round(p.precio / 2);
   const c3 = Math.round(p.precio / 3);
@@ -550,7 +548,7 @@ function openModal(id){
             <div class="text-xs text-[var(--brand-yellow)] text-right">No incluye cuotas</div>
             ` : `
             <div class="flex justify-between items-center">
-              <span class="text-xs text-zinc-400">1 Pago (10% OFF):</span>
+              <span class="text-xs text-zinc-400">Precio Final:</span>
               <span class="text-[var(--brand-blue)] font-extrabold text-lg">$${fmt(pDesc)}</span>
             </div>
             <div class="flex justify-between items-center text-xs">
