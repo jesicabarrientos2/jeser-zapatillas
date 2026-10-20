@@ -94,6 +94,7 @@
 
     <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-300">
       <a href="#catalogo" class="hover:text-[var(--brand-red)] transition">Catálogo</a>
+      <a href="#temporada-verano-2027" class="hover:text-[var(--brand-yellow)] transition">Temporada Verano 2027</a>
       <a href="#talle" class="hover:text-[var(--brand-blue)] transition">Mi Talle</a>
       <a href="#pago" class="hover:text-[var(--brand-yellow)] transition">Medios de Pago</a>
       <a href="#envios" class="hover:text-[var(--brand-red)] transition">Envíos</a>
@@ -190,6 +191,16 @@
   <p id="emptyState" class="hidden text-center text-zinc-500 py-16">No encontramos modelos con esos filtros.</p>
 </section>
 
+<!-- ============ SECCIÓN NUEVA: TEMPORADA VERANO 2027 ============ -->
+<section id="temporada-verano-2027" class="max-w-7xl mx-auto px-4 sm:px-6 pb-16 border-t border-zinc-800/80 pt-16">
+  <div class="mb-8">
+    <p class="graffiti-font text-lg text-[var(--brand-yellow)]">Exclusivo Drop</p>
+    <h2 class="display-font text-3xl sm:text-4xl text-white">TEMPORADA VERANO 2027</h2>
+    <p class="text-zinc-400 text-sm mt-1">Los nuevos ingresos de la temporada con precio de oferta especial.</p>
+  </div>
+  <div id="gridVerano2027" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+</section>
+
 <!-- ============ MEDIOS DE PAGO Y CUOTAS ============ -->
 <section id="pago" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 border-t border-zinc-800/80">
   <div class="text-center max-w-2xl mx-auto mb-12">
@@ -205,8 +216,8 @@
         <span class="bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] text-xs font-bold px-3 py-1 rounded-full uppercase">Mejor Precio</span>
         <h3 class="display-font text-2xl mt-3">1 Pago / Transferencia</h3>
         <p class="text-xs text-zinc-400 mt-1 mb-4">Aprovechá un 10% de descuento directo sobre el valor total.</p>
-        <p class="text-[var(--brand-blue)] font-extrabold text-4xl mb-2">$35.100</p>
-        <p class="text-xs text-zinc-500">Precio de lista: $39.000</p>
+        <p class="text-[var(--brand-blue)] font-extrabold text-4xl mb-2">$76.950</p>
+        <p class="text-xs text-zinc-500">Precio de lista base: $85.500</p>
       </div>
       <div class="mt-6 pt-4 border-t border-zinc-800">
         <button id="copyCvuBtn" class="w-full bg-zinc-800 hover:bg-[var(--brand-blue)] hover:text-black text-white font-bold py-3 rounded-xl transition text-sm">
@@ -221,8 +232,8 @@
         <span class="bg-[var(--brand-yellow)]/10 text-[var(--brand-yellow)] text-xs font-bold px-3 py-1 rounded-full uppercase">Financiado</span>
         <h3 class="display-font text-2xl mt-3">2 Cuotas Sin Interés</h3>
         <p class="text-xs text-zinc-400 mt-1 mb-4">Pagá en 2 cuotas fijas por Mercado Pago o WhatsApp.</p>
-        <p class="text-[var(--brand-yellow)] font-extrabold text-4xl mb-2">2x $19.500</p>
-        <p class="text-xs text-zinc-500">Total a pagar: $39.000</p>
+        <p class="text-[var(--brand-yellow)] font-extrabold text-4xl mb-2">2x $42.750</p>
+        <p class="text-xs text-zinc-500">Total a pagar base: $85.500</p>
       </div>
       <div class="mt-6 pt-4 border-t border-zinc-800">
         <a href="https://mpago.la/" target="_blank" class="block text-center w-full bg-[#009EE3] hover:brightness-110 text-white font-bold py-3 rounded-xl transition text-sm">
@@ -237,8 +248,8 @@
         <span class="bg-[var(--brand-red)]/10 text-[var(--brand-red)] text-xs font-bold px-3 py-1 rounded-full uppercase">Popular</span>
         <h3 class="display-font text-2xl mt-3">3 Cuotas Sin Interés</h3>
         <p class="text-xs text-zinc-400 mt-1 mb-4">Llevátelas hoy y pagalas cómodamente en 3 cuotas.</p>
-        <p class="text-neon-red font-extrabold text-4xl mb-2">3x $13.000</p>
-        <p class="text-xs text-zinc-500">Total a pagar: $39.000</p>
+        <p class="text-neon-red font-extrabold text-4xl mb-2">3x $28.500</p>
+        <p class="text-xs text-zinc-500">Total a pagar base: $85.500</p>
       </div>
       <div class="mt-6 pt-4 border-t border-zinc-800 flex gap-2">
         <a href="https://wa.me/5491131941523?text=Hola%20Jeser!%20Quiero%20comprar%20en%203%20cuotas" target="_blank" 
@@ -362,20 +373,20 @@ const productos = [
   { id:22, nombre:"Nike Dunk Low Polar Blue", genero:"mujer", precio: 85500, img:"images/p17.jpg", desc:"Azul celeste y blanco sobre suela semitransparente." },
   { id:23, nombre:"Adidas Superstar XLG Crema", genero:"mujer", precio: 85500, img:"images/p18.jpg", desc:"Suela sobredimensionada en tono crema vintage." },
   { id:24, nombre:"Air Jordan 3 Black Cat", genero:"hombre", precio: 85500, img:"images/p20.jpg", desc:"Negro sigiloso con print de elefante en talón y puntera." },
-  { id: 25, nombre: "Jeser Urban Drop 86", genero: "unisex", precio: 39000, img: "86.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 26, nombre: "Jeser Urban Drop 87", genero: "unisex", precio: 39000, img: "87.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 27, nombre: "Jeser Urban Drop 88", genero: "unisex", precio: 39000, img: "88.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 28, nombre: "Jeser Urban Drop 89", genero: "unisex", precio: 39000, img: "89.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 29, nombre: "Jeser Urban Drop 90", genero: "unisex", precio: 39000, img: "90.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 30, nombre: "Jeser Urban Drop 91", genero: "unisex", precio: 39000, img: "91.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 31, nombre: "Jeser Urban Drop 92", genero: "unisex", precio: 39000, img: "92.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 32, nombre: "Jeser Urban Drop 93", genero: "unisex", precio: 39000, img: "93.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 33, nombre: "Jeser Urban Drop 94", genero: "unisex", precio: 39000, img: "94.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 34, nombre: "Jeser Urban Drop 95", genero: "unisex", precio: 39000, img: "95.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 35, nombre: "Jeser Urban Drop 96", genero: "unisex", precio: 39000, img: "96.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 36, nombre: "Jeser Urban Drop 97", genero: "unisex", precio: 39000, img: "97.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 37, nombre: "Jeser Urban Drop 98", genero: "unisex", precio: 39000, img: "98.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." },
-  { id: 38, nombre: "Jeser Urban Drop 99", genero: "unisex", precio: 39000, img: "99.jpeg", desc: "Diseño urbano exclusivo de la línea Jeser Drop." }
+  { id:25, nombre:"Jeser Urban Drop 86", genero:"unisex", precio: 39000, img:"86.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:26, nombre:"Jeser Urban Drop 87", genero:"unisex", precio: 39000, img:"87.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:27, nombre:"Jeser Urban Drop 88", genero:"unisex", precio: 39000, img:"88.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:28, nombre:"Jeser Urban Drop 89", genero:"unisex", precio: 39000, img:"89.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:29, nombre:"Jeser Urban Drop 90", genero:"unisex", precio: 39000, img:"90.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:30, nombre:"Jeser Urban Drop 91", genero:"unisex", precio: 39000, img:"91.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:31, nombre:"Jeser Urban Drop 92", genero:"unisex", precio: 39000, img:"92.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:32, nombre:"Jeser Urban Drop 93", genero:"unisex", precio: 39000, img:"93.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:33, nombre:"Jeser Urban Drop 94", genero:"unisex", precio: 39000, img:"94.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:34, nombre:"Jeser Urban Drop 95", genero:"unisex", precio: 39000, img:"95.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:35, nombre:"Jeser Urban Drop 96", genero:"unisex", precio: 39000, img:"96.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:36, nombre:"Jeser Urban Drop 97", genero:"unisex", precio: 39000, img:"97.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:37, nombre:"Jeser Urban Drop 98", genero:"unisex", precio: 39000, img:"98.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." },
+  { id:38, nombre:"Jeser Urban Drop 99", genero:"unisex", precio: 39000, img:"99.jpeg", desc:"Modelo exclusivo de la temporada Verano 2027 con diseño urbano en oferta." }
 ];
 
 const sizeChart = [
@@ -423,6 +434,7 @@ setInterval(rotateHeroImage, 3500);
 
 /* ================= RENDER CATALOGO ================= */
 const grid = document.getElementById('grid');
+const gridVerano2027 = document.getElementById('gridVerano2027');
 const emptyState = document.getElementById('emptyState');
 const filterGenero = document.getElementById('filterGenero');
 const filterTalle = document.getElementById('filterTalle');
@@ -435,14 +447,13 @@ for(let t=26; t<=45; t++){
 
 function productCard(p){
   const pDesc = Math.round(p.precio * (1 - DESCUENTO_PCT/100));
-  const c3 = Math.round(p.precio / 3);
 
   return `
   <div class="graffiti-card rounded-2xl overflow-hidden cursor-pointer group" data-id="${p.id}">
     <div class="relative overflow-hidden">
       <img src="${p.img}" alt="${p.nombre}" class="card-img w-full group-hover:scale-105 transition duration-500">
       <span class="absolute top-3 left-3 bg-black/80 backdrop-blur border border-[var(--brand-red)] text-[var(--brand-red)] text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md">
-        10% OFF 1 Pago
+        ${p.precio === 39000 ? 'OFERTA' : '10% OFF 1 Pago'}
       </span>
     </div>
     <div class="p-4">
@@ -450,6 +461,12 @@ function productCard(p){
       <h3 class="font-extrabold text-base leading-tight text-white mb-2 group-hover:text-[var(--brand-red)] transition">${p.nombre}</h3>
       
       <div class="space-y-1 mb-4">
+        ${p.precio === 39000 ? `
+        <div class="flex items-baseline justify-between">
+          <span class="text-xs text-zinc-400">Precio Oferta:</span>
+          <span class="text-[var(--brand-yellow)] font-extrabold">$${fmt(p.precio)}</span>
+        </div>
+        ` : `
         <div class="flex items-baseline justify-between">
           <span class="text-xs text-zinc-400">1 pago (Transferencia):</span>
           <span class="text-[var(--brand-blue)] font-extrabold">$${fmt(pDesc)}</span>
@@ -459,8 +476,9 @@ function productCard(p){
           <span class="text-white font-bold">$${fmt(p.precio)}</span>
         </div>
         <div class="text-[11px] text-[var(--brand-yellow)] text-right">
-          O 3 cuotas de $${fmt(c3)}
+          O 3 cuotas de $${fmt(Math.round(p.precio / 3))}
         </div>
+        `}
       </div>
 
       <button class="w-full bg-zinc-800 hover:bg-[var(--brand-red)] text-white text-xs font-extrabold uppercase py-2.5 rounded-xl transition">
@@ -472,9 +490,18 @@ function productCard(p){
 
 function renderGrid(){
   const g = filterGenero.value;
-  const filtered = productos.filter(p => g === 'todos' || p.genero === g || p.genero === 'unisex');
+  const filtered = productos.filter(p => p.precio !== 39000 && (g === 'todos' || p.genero === g || p.genero === 'unisex'));
   grid.innerHTML = filtered.map(productCard).join('');
   emptyState.classList.toggle('hidden', filtered.length > 0);
+
+  // Renderizar sección Temporada Verano 2027
+  const veranoProducts = productos.filter(p => p.precio === 39000);
+  if(gridVerano2027) {
+    gridVerano2027.innerHTML = veranoProducts.map(productCard).join('');
+    gridVerano2027.querySelectorAll('[data-id]').forEach(el=>{
+      el.addEventListener('click', ()=> openModal(Number(el.dataset.id)));
+    });
+  }
 
   grid.querySelectorAll('[data-id]').forEach(el=>{
     el.addEventListener('click', ()=> openModal(Number(el.dataset.id)));
@@ -518,6 +545,13 @@ function openModal(id){
 
           <!-- Precios -->
           <div class="bg-black/50 border border-zinc-800 rounded-xl p-3 mb-4 space-y-2">
+            ${p.precio === 39000 ? `
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-zinc-400">Precio Oferta:</span>
+              <span class="text-[var(--brand-yellow)] font-extrabold text-lg">$${fmt(p.precio)}</span>
+            </div>
+            <div class="text-[11px] text-zinc-500 italic text-right">Este modelo en oferta no aplica para cuotas.</div>
+            ` : `
             <div class="flex justify-between items-center">
               <span class="text-xs text-zinc-400">1 Pago (10% OFF):</span>
               <span class="text-[var(--brand-blue)] font-extrabold text-lg">$${fmt(pDesc)}</span>
@@ -530,6 +564,7 @@ function openModal(id){
               <span class="text-zinc-400">3 Cuotas fijas:</span>
               <span class="text-[var(--brand-red)] font-bold">3x $${fmt(c3)}</span>
             </div>
+            `}
           </div>
 
           <!-- Selección de Talle -->
@@ -548,11 +583,13 @@ function openModal(id){
           <!-- Botones de Acción -->
           <div class="space-y-2">
             <a id="modalWaBtn" href="#" target="_blank" class="block text-center bg-[var(--brand-red)] text-white font-extrabold uppercase text-xs py-3 rounded-xl hover:brightness-125 transition shadow-[0_0_15px_rgba(255,0,60,0.5)]">
-              Pedir por WhatsApp (1 Pago / Transferencia)
+              Pedir por WhatsApp
             </a>
+            ${p.precio !== 39000 ? `
             <a href="https://mpago.la/" target="_blank" class="block text-center bg-[#009EE3] text-white font-extrabold uppercase text-xs py-3 rounded-xl hover:brightness-110 transition">
               Pagar por Mercado Pago (2 o 3 cuotas)
             </a>
+            ` : ''}
           </div>
         </div>
       </div>
