@@ -361,8 +361,254 @@ const productos = [
   { id:21, nombre:"Adidas Forum Low", genero:"hombre", precio: 85500, img:"images/p16.jpg", desc:"Diseño retro básquet en tonos neutros con llavero de regalo." },
   { id:22, nombre:"Nike Dunk Low Polar Blue", genero:"mujer", precio: 85500, img:"images/p17.jpg", desc:"Azul celeste y blanco sobre suela semitransparente." },
   { id:23, nombre:"Adidas Superstar XLG Crema", genero:"mujer", precio: 85500, img:"images/p18.jpg", desc:"Suela sobredimensionada en tono crema vintage." },
-  { id:24, nombre:"Air Jordan 3 Black Cat", genero:"hombre", precio: 85500, img:"images/p20.jpg", desc:"Negro sigiloso con print de elefante en talón y puntera." },
-  /* ============ NUEVOS MODELOS (86 al 99) ============ */
-  { id:25, nombre:"Jeser Urban Drop 86", genero:"unisex", precio: 39999, img:"86.jpeg", desc:"Modelo exclusivo urbano de la serie 86 con diseño versátil." },
-  { id:26, nombre:"Jeser Urban Drop 87", genero:"unisex", precio: 39999, img:"87.jpeg", desc:"Estilo urbano moderno con gran comodidad para todos los días." },
-  { id:27, nombre:"Jeser Urban
+  { id:24, nombre:"Air Jordan 3 Black Cat", genero:"hombre", precio: 85500, img:"images/p20.jpg", desc:"Negro sigiloso con print de elefante en talón y puntera." }
+];
+
+const sizeChart = [
+  [16.5,26],[17,27],[17.5,28],[18,29],[18.5,30],[19,31],[19.5,32],[20,33],
+  [20.5,34],[21,35],[21.5,36],[22,37],[22.5,38],[23,39],[23.5,40],
+  [24,41],[24.5,42],[25,43],[25.5,44],[26,45]
+];
+
+const fmt = n => n.toLocaleString('es-AR');
+
+function waLink(msg, numKey = 'wa1'){
+  const number = WHATSAPP_NUMBERS[numKey] || WHATSAPP_NUMBERS.wa1;
+  return `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+}
+
+/* ================= ROTACIÓN DE IMAGEN PORTADA (HERO) ================= */
+const heroImages = [
+  { img: "1.jpeg", nombre: "Urban Classic 1" },
+  { img: "2.jpeg", nombre: "Urban Sneaker 2" },
+  { img: "3.jpeg", nombre: "Jeser Street 3" },
+  { img: "4.jpeg", nombre: "Urban Drop 4" },
+  { img: "5.jpeg", nombre: "Jeser Collection 5" },
+  { img: "6.jpeg", nombre: "Urban Pearl 6" },
+  { img: "7.jpeg", nombre: "Jeser Monogram 7" },
+  { img: "8.jpeg", nombre: "Urban Heritage 8" }
+];
+
+let heroIndex = 0;
+const heroImgElement = document.getElementById('heroRotativeImg');
+const heroNameElement = document.getElementById('heroImgName');
+
+function rotateHeroImage() {
+  heroIndex = (heroIndex + 1) % heroImages.length;
+  if(heroImgElement) {
+    heroImgElement.style.opacity = '0';
+    setTimeout(() => {
+      heroImgElement.src = heroImages[heroIndex].img;
+      if(heroNameElement) heroNameElement.textContent = heroImages[heroIndex].nombre;
+      heroImgElement.style.opacity = '1';
+    }, 400);
+  }
+}
+
+setInterval(rotateHeroImage, 3500);
+
+/* ================= RENDER CATALOGO ================= */
+const grid = document.getElementById('grid');
+const emptyState = document.getElementById('emptyState');
+const filterGenero = document.getElementById('filterGenero');
+const filterTalle = document.getElementById('filterTalle');
+
+for(let t=26; t<=45; t++){
+  const opt = document.createElement('option');
+  opt.value = t; opt.textContent = "Talle " + t;
+  filterTalle.appendChild(opt);
+}
+
+function productCard(p){
+  const pDesc = Math.round(p.precio * (1 - DESCUENTO_PCT/100));
+  const c3 = Math.round(p.precio / 3);
+
+  return `
+  <div class="graffiti-card rounded-2xl overflow-hidden cursor-pointer group" data-id="${p.id}">
+    <div class="relative overflow-hidden">
+      <img src="${p.img}" alt="${p.nombre}" class="card-img w-full group-hover:scale-105 transition duration-500">
+      <span class="absolute top-3 left-3 bg-black/80 backdrop-blur border border-[var(--brand-red)] text-[var(--brand-red)] text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md">
+        10% OFF 1 Pago
+      </span>
+    </div>
+    <div class="p-4">
+      <p class="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">${p.genero}</p>
+      <h3 class="font-extrabold text-base leading-tight text-white mb-2 group-hover:text-[var(--brand-red)] transition">${p.nombre}</h3>
+      
+      <div class="space-y-1 mb-4">
+        <div class="flex items-baseline justify-between">
+          <span class="text-xs text-zinc-400">1 pago (Transferencia):</span>
+          <span class="text-[var(--brand-blue)] font-extrabold">$${fmt(pDesc)}</span>
+        </div>
+        <div class="flex items-baseline justify-between text-xs text-zinc-400">
+          <span>Lista / Mercado Pago:</span>
+          <span class="text-white font-bold">$${fmt(p.precio)}</span>
+        </div>
+        <div class="text-[11px] text-[var(--brand-yellow)] text-right">
+          O 3 cuotas de $${fmt(c3)}
+        </div>
+      </div>
+
+      <button class="w-full bg-zinc-800 hover:bg-[var(--brand-red)] text-white text-xs font-extrabold uppercase py-2.5 rounded-xl transition">
+        Ver Detalle & Comprar
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderGrid(){
+  const g = filterGenero.value;
+  const filtered = productos.filter(p => g === 'todos' || p.genero === g || p.genero === 'unisex');
+  grid.innerHTML = filtered.map(productCard).join('');
+  emptyState.classList.toggle('hidden', filtered.length > 0);
+
+  grid.querySelectorAll('[data-id]').forEach(el=>{
+    el.addEventListener('click', ()=> openModal(Number(el.dataset.id)));
+  });
+}
+
+filterGenero.addEventListener('change', renderGrid);
+filterTalle.addEventListener('change', renderGrid);
+renderGrid();
+
+/* ================= MODAL / DETALLE DE COMPRA ================= */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+
+function openModal(id){
+  const p = productos.find(x=>x.id === id);
+  if(!p) return;
+  const imgs = p.images || [p.img];
+  const pDesc = Math.round(p.precio * (1 - DESCUENTO_PCT/100));
+  const c2 = Math.round(p.precio / 2);
+  const c3 = Math.round(p.precio / 3);
+  
+  let talleOpts = '';
+  for(let t=26; t<=45; t++) talleOpts += `<option value="${t}">${t}</option>`;
+
+  modalContent.innerHTML = `
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <span class="graffiti-font text-xl text-[var(--brand-red)]">URBAN DROP</span>
+        <button id="closeModal" class="text-zinc-400 hover:text-white text-2xl font-bold px-2">&times;</button>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <img src="${imgs[0]}" alt="${p.nombre}" class="rounded-xl w-full aspect-square object-cover mb-2 border border-zinc-800">
+        </div>
+        
+        <div>
+          <h3 class="display-font text-2xl text-white mb-2">${p.nombre}</h3>
+          <p class="text-xs text-zinc-400 mb-4">${p.desc}</p>
+
+          <!-- Precios -->
+          <div class="bg-black/50 border border-zinc-800 rounded-xl p-3 mb-4 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-zinc-400">1 Pago (10% OFF):</span>
+              <span class="text-[var(--brand-blue)] font-extrabold text-lg">$${fmt(pDesc)}</span>
+            </div>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-zinc-400">2 Cuotas fijas:</span>
+              <span class="text-[var(--brand-yellow)] font-bold">2x $${fmt(c2)}</span>
+            </div>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-zinc-400">3 Cuotas fijas:</span>
+              <span class="text-[var(--brand-red)] font-bold">3x $${fmt(c3)}</span>
+            </div>
+          </div>
+
+          <!-- Selección de Talle -->
+          <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Elegí tu Talle</label>
+          <select id="modalTalle" class="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2.5 mb-4 text-sm font-bold text-white focus:border-[var(--brand-red)] outline-none">
+            ${talleOpts}
+          </select>
+
+          <!-- Selección de Línea WhatsApp -->
+          <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Elegí la Línea de WhatsApp</label>
+          <select id="modalWaSelect" class="w-full bg-black border border-zinc-700 rounded-xl px-3 py-2.5 mb-6 text-sm font-bold text-white focus:border-[var(--brand-red)] outline-none">
+            <option value="wa1">WhatsApp 1 (11 3194-1523)</option>
+            <option value="wa2">WhatsApp 2 (11 3911-6989)</option>
+          </select>
+
+          <!-- Botones de Acción -->
+          <div class="space-y-2">
+            <a id="modalWaBtn" href="#" target="_blank" class="block text-center bg-[var(--brand-red)] text-white font-extrabold uppercase text-xs py-3 rounded-xl hover:brightness-125 transition shadow-[0_0_15px_rgba(255,0,60,0.5)]">
+              Pedir por WhatsApp (1 Pago / Transferencia)
+            </a>
+            <a href="https://mpago.la/" target="_blank" class="block text-center bg-[#009EE3] text-white font-extrabold uppercase text-xs py-3 rounded-xl hover:brightness-110 transition">
+              Pagar por Mercado Pago (2 o 3 cuotas)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const talleSel = modalContent.querySelector('#modalTalle');
+  const waSel = modalContent.querySelector('#modalWaSelect');
+  const waBtn = modalContent.querySelector('#modalWaBtn');
+
+  function updateWa(){
+    const msg = `Hola Jeser! Quiero comprar las ${p.nombre} en Talle ${talleSel.value}. ¿Tienen stock?`;
+    waBtn.href = waLink(msg, waSel.value);
+  }
+  talleSel.addEventListener('change', updateWa);
+  waSel.addEventListener('change', updateWa);
+  updateWa();
+
+  modalContent.querySelector('#closeModal').addEventListener('click', closeModal);
+  modalOverlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  modalOverlay.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+modalOverlay.addEventListener('click', e => { if(e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* ================= CALCULADOR TALLE ================= */
+document.getElementById('calcTalleBtn').addEventListener('click', ()=>{
+  const cm = parseFloat(document.getElementById('footCm').value);
+  const resultBox = document.getElementById('talleResultado');
+  const talleNumero = document.getElementById('talleNumero');
+  if(!cm || cm < 14 || cm > 30){
+    showToast('Ingresá una medida válida en cm (14 a 30).');
+    return;
+  }
+  let best = sizeChart[0];
+  for(const row of sizeChart){
+    if(Math.abs(row[0]-cm) < Math.abs(best[0]-cm)) best = row;
+  }
+  talleNumero.textContent = best[1];
+  resultBox.classList.remove('hidden');
+});
+
+/* ================= COPIAR CVU ================= */
+const copyCvuBtn = document.getElementById('copyCvuBtn');
+const CVU = "0000003100088773099535";
+copyCvuBtn.addEventListener('click', async ()=>{
+  try {
+    await navigator.clipboard.writeText(CVU);
+  } catch(e) {
+    const ta = document.createElement('textarea');
+    ta.value = CVU; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+  }
+  showToast('¡CVU copiado al portapapeles!');
+});
+
+/* ================= TOAST ================= */
+let toastTimer;
+function showToast(text){
+  const toast = document.getElementById('toast');
+  toast.textContent = text;
+  toast.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> toast.classList.add('hidden'), 2500);
+}
+</script>
+</body>
+</html>
